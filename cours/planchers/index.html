@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cours interactif sur le dimensionnement des planchers mixtes acier-béton selon l'Eurocode 4">
+    <title>Planchers Mixtes | Cours Interactif</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo">
+                <span class="logo-icon">🏢</span>
+                <span>Planchers Mixtes</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Eurocode 4</div>
+            <h1>Dimensionnement des<br><span class="gradient-text">Planchers Mixtes</span></h1>
+            <p>Maîtrisez le calcul des planchers mixtes acier-béton : tôles nervurées, phase construction, comportement
+                mixte et résistance au feu.</p>
+            <div class="hero-buttons">
+                <a href="chapitre1.html" class="btn btn-primary">Commencer le cours</a>
+                <a href="calculateurs.html" class="btn btn-secondary">Calculateurs</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <svg viewBox="0 0 400 200" class="floor-diagram">
+                <!-- Bac acier -->
+                <path
+                    d="M20,120 L50,120 L60,80 L100,80 L110,120 L150,120 L160,80 L200,80 L210,120 L250,120 L260,80 L300,80 L310,120 L350,120 L360,80 L380,80 L380,125 L20,125 Z"
+                    fill="#4a90a4" stroke="#2d5a8a" stroke-width="2" />
+                <!-- Béton -->
+                <path
+                    d="M20,80 L60,80 L60,40 L100,40 L100,80 L160,80 L160,40 L200,40 L200,80 L260,80 L260,40 L300,40 L300,80 L360,80 L360,40 L380,40 L380,80"
+                    fill="none" stroke="#888" stroke-width="0" />
+                <rect x="20" y="40" width="360" height="40" fill="#b0b0b0" opacity="0.8" />
+                <!-- Treillis -->
+                <circle cx="60" cy="55" r="4" fill="#333" />
+                <circle cx="130" cy="55" r="4" fill="#333" />
+                <circle cx="200" cy="55" r="4" fill="#333" />
+                <circle cx="270" cy="55" r="4" fill="#333" />
+                <circle cx="340" cy="55" r="4" fill="#333" />
+                <!-- Annotations -->
+                <text x="200" y="170" text-anchor="middle" font-size="14" fill="#1e3a5f" font-weight="bold">Plancher
+                    mixte avec bac acier nervuré</text>
+            </svg>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Contenu du Cours</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔩</div>
+                    <h3>Composants</h3>
+                    <p>Bacs acier, béton, armatures et leurs caractéristiques selon les normes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>Phase Construction</h3>
+                    <p>Vérification de la tôle seule sous béton frais et charges de chantier.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>ELU & ELS</h3>
+                    <p>Moment résistant plastique, cisaillement, flèches et vibrations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Résistance au Feu</h3>
+                    <p>Dimensionnement des armatures complémentaires pour R30 à R120.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3>5 Calculateurs</h3>
+                    <p>Outils interactifs pour dimensionner vos planchers pas à pas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Exercices</h3>
+                    <p>Études de cas réalistes avec solutions détaillées.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="chapters-timeline">
+        <div class="container">
+            <h2 class="section-title">Parcours d'Apprentissage</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Introduction</h3>
+                        <p>Types de planchers, avantages, cadre normatif</p>
+                        <a href="chapitre1.html" class="timeline-link">Découvrir →</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Composants</h3>
+                        <p>Bacs acier, béton, armatures, géométrie</p>
+                        <a href="chapitre2.html" class="timeline-link">Découvrir →</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Phase Construction</h3>
+                        <p>Vérification tôle seule, ponding, étaiement</p>
+                        <a href="chapitre3.html" class="timeline-link">Découvrir →</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Dimensionnement ELU</h3>
+                        <p>Moment plastique, cisaillement, m-k</p>
+                        <a href="chapitre4.html" class="timeline-link">Découvrir →</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Vérifications ELS</h3>
+                        <p>Flèches, fissuration, vibrations</p>
+                        <a href="chapitre5.html" class="timeline-link">Découvrir →</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">6</div>
+                    <div class="timeline-content">
+                        <h3>Résistance au Feu</h3>
+                        <p>R30 à R120, armatures complémentaires</p>
+                        <a href="chapitre6.html" class="timeline-link">Découvrir →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="formula-preview">
+        <div class="container">
+            <h2 class="section-title">Formules Clés</h2>
+            <div class="formulas-grid">
+                <div class="formula-card">
+                    <h4>Moment Résistant Plastique</h4>
+                    <div class="formula-display">
+                        \[M_{pl,Rd} = A_p \cdot f_{yp} \cdot z\]
+                    </div>
+                </div>
+                <div class="formula-card">
+                    <h4>Méthode m-k</h4>
+                    <div class="formula-display">
+                        \[\frac{V_\ell}{b \cdot d_p} = m \cdot \frac{A_p}{b \cdot L_s} + k\]
+                    </div>
+                </div>
+                <div class="formula-card">
+                    <h4>Résistance au Cisaillement</h4>
+                    <div class="formula-display">
+                        \[V_{Rd} = b_0 \cdot d_p \cdot k_v \cdot \sqrt{f_{ck}}\]
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="formulaire.html" class="btn btn-secondary">Voir tout le formulaire</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Planchers Mixtes</h4>
+                    <p>Cours interactif de construction mixte selon l'Eurocode 4</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="chapitre1.html">Cours</a></li>
+                        <li><a href="calculateurs.html">Calculateurs</a></li>
+                        <li><a href="exercices.html">Exercices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="formulaire.html">Formulaire</a></li>
+                        <li><a href="../cours_planchers_mixtes.tex">Source LaTeX</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dimensionnement ELU des poutres mixtes - Moment résistant plastique et effort tranchant">
+    <title>ELU Flexion | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Poutres Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html" class="active">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 4</span>
+            </div>
+            <h1>Chapitre 4 : Dimensionnement à l'ELU</h1>
+            <p>Moment résistant plastique et effort tranchant</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>4.1 Moment Résistant Plastique</h2>
+
+                <h3>4.1.1 Cas 1 : Axe neutre dans la dalle (\(N_{c,f} \geq N_{a,pl}\))</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Moment résistant - ANP dans la dalle</h4>
+                    <p><strong>Hauteur comprimée du béton :</strong></p>
+                    \[z_{pl} = \frac{A_a \cdot f_{yd}}{0.85 \cdot f_{cd} \cdot b_{eff}}\]
+
+                    <p><strong>Bras de levier :</strong></p>
+                    \[d = \frac{h_a}{2} + h_c + h_p - \frac{z_{pl}}{2}\]
+
+                    <p><strong>Moment résistant plastique :</strong></p>
+                    \[\boxed{M_{pl,Rd} = A_a \cdot f_{yd} \cdot d}\]
+                </div>
+
+                <h3>4.1.2 Cas 2 : Axe neutre dans la semelle supérieure</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Moment résistant - ANP dans la semelle</h4>
+                    <p>Si \(N_{c,f} < N_{a,pl}\) et \((N_{a,pl} - N_{c,f}) \leq 2 \cdot b_f \cdot t_f \cdot f_{yd}\)
+                            :</p>
+                            \[z_{pl,a} = \frac{N_{a,pl} - N_{c,f}}{2 \cdot b_f \cdot f_{yd}}\]
+
+                            \[M_{pl,Rd} = M_{a,pl,Rd} + N_{c,f} \cdot d_1 - \frac{(N_{a,pl} - N_{c,f})^2}{8 \cdot b_f
+                            \cdot f_{yd}}\]
+                </div>
+
+                <h3>4.1.3 Cas 3 : Axe neutre dans l'âme</h3>
+
+                <p>Si l'ANP est dans l'âme, on utilise les formules avec intégration complète des moments des
+                    différentes zones.</p>
+
+                <div class="info-box example">
+                    <h4>💡 Application numérique complète</h4>
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Profilé IPE 360 en S355 : \(A_a = 72.7\) cm², \(h_a = 360\) mm</li>
+                        <li>Dalle C30/37 : \(h_c = 120\) mm, \(b_{eff} = 1500\) mm</li>
+                        <li>Bac acier : \(h_p = 55\) mm</li>
+                    </ul>
+
+                    <p><strong>Étape 1 : Forces plastiques</strong></p>
+                    \[N_{a,pl} = 72.7 \times 10^{-4} \times 355 \times 10^3 = 2581 \text{ kN}\]
+                    \[N_{c,f} = 0.85 \times 20 \times 1500 \times 120 \times 10^{-3} = 3060 \text{ kN}\]
+
+                    <p>\(N_{c,f} > N_{a,pl}\) → <strong>ANP dans la dalle</strong></p>
+
+                    <p><strong>Étape 2 : Position ANP</strong></p>
+                    \[z_{pl} = \frac{2581 \times 10^3}{0.85 \times 20 \times 1500} = 101.2 \text{ mm} < 120 \text{ mm
+                        ✓}\] <p><strong>Étape 3 : Bras de levier</strong></p>
+                        \[d = \frac{360}{2} + 120 + 55 - \frac{101.2}{2} = 304.4 \text{ mm}\]
+
+                        <p><strong>Étape 4 : Moment résistant</strong></p>
+                        \[\boxed{M_{pl,Rd} = 2581 \times 0.3044 = 785.7 \text{ kN.m}}\]
+                </div>
+
+                <h2>4.2 Effort Tranchant</h2>
+
+                <h3>4.2.1 Résistance Plastique au Cisaillement</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Résistance à l'effort tranchant (EC3 §6.2.6)</h4>
+                    \[V_{pl,Rd} = \frac{A_v \cdot f_{yd}}{\sqrt{3}}\]
+
+                    <p>Aire de cisaillement pour sections en I ou H :</p>
+                    \[A_v = A_a - 2 b_f t_f + (t_w + 2r) t_f \geq \eta \cdot h_w \cdot t_w\]
+                    <p>avec \(\eta = 1.0\) pour les nuances jusqu'à S460</p>
+                </div>
+
+                <h3>4.2.2 Interaction Moment-Effort Tranchant</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Réduction du moment résistant (EC4 §6.2.2.4)</h4>
+                    <p>Si \(V_{Ed} > 0.5 \cdot V_{pl,Rd}\), le moment résistant doit être réduit :</p>
+                    \[M_{V,Rd} = M_{pl,Rd} - (M_{pl,Rd} - M_{f,Rd}) \cdot \left(\frac{2V_{Ed}}{V_{pl,Rd}} - 1\right)^2\]
+                    <p>où \(M_{f,Rd}\) est le moment résistant des semelles seules.</p>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Vérification</h4>
+                    <p>La condition à vérifier est :</p>
+                    \[\frac{M_{Ed}}{M_{pl,Rd}} \leq 1.0 \quad \text{et} \quad \frac{V_{Ed}}{V_{pl,Rd}} \leq 1.0\]
+                </div>
+
+                <h2>4.3 Tableau Récapitulatif</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Vérification</th>
+                                <th>Formule</th>
+                                <th>Condition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Flexion</td>
+                                <td>\(M_{pl,Rd} = A_a \cdot f_{yd} \cdot d\)</td>
+                                <td>\(M_{Ed} \leq M_{pl,Rd}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Cisaillement</td>
+                                <td>\(V_{pl,Rd} = A_v \cdot f_{yd} / \sqrt{3}\)</td>
+                                <td>\(V_{Ed} \leq V_{pl,Rd}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Interaction M-V</td>
+                                <td>Réduction si \(V_{Ed} > 0.5 V_{pl,Rd}\)</td>
+                                <td>\(M_{Ed} \leq M_{V,Rd}\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="text-align: center; margin: var(--space-xl) 0;">
+                    <a href="calculateurs.html#calc-moment" class="btn btn-primary">
+                        🔧 Utiliser le calculateur de moment
+                    </a>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre3.html" class="nav-btn prev">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Chapitre 3 : Comportement</span>
+                    </a>
+                    <a href="chapitre5.html" class="nav-btn next">
+                        <span>Chapitre 5 : ELS</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

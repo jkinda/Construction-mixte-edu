@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Résistance au feu des planchers mixtes - R30 à R120">
+    <title>Résistance au Feu | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html" class="active">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 6</span>
+            </div>
+            <h1>Chapitre 6 : Résistance au Feu</h1>
+            <p>Stabilité au feu et armatures complémentaires</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>6.1 Exigences Réglementaires</h2>
+
+                <p>Les durées de résistance au feu courantes sont :</p>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Classe de feu</th>
+                                <th>Durée</th>
+                                <th>Applications</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>R30</strong></td>
+                                <td>30 min</td>
+                                <td>Habitations, bureaux petite hauteur</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>R60</strong></td>
+                                <td>60 min</td>
+                                <td>ERP, bureaux moyenne hauteur</td>
+                            </tr>
+                            <tr>
+                                <td><strong>R90</strong></td>
+                                <td>90 min</td>
+                                <td>IGH, parkings couverts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>R120</strong></td>
+                                <td>120 min</td>
+                                <td>Exigences spéciales</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>6.2 Comportement au Feu</h2>
+
+                <p>En situation d'incendie :</p>
+                <ul>
+                    <li>Le bac acier perd rapidement sa résistance (dès <strong>400°C</strong>)</li>
+                    <li>Le béton protège les armatures complémentaires</li>
+                    <li>La résistance est assurée par les <strong>armatures dans les nervures</strong></li>
+                </ul>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Important</h4>
+                    <p>En situation de feu, le bac acier est considéré comme <strong>non résistant</strong>. Seules les
+                        armatures complémentaires assurent la résistance en flexion.</p>
+                </div>
+
+                <h2>6.3 Méthode Simplifiée (EC4 Partie 1-2)</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Moment résistant en situation de feu</h4>
+                    \[M_{fi,Rd} = A_s \cdot f_{sd,fi} \cdot z_{fi}\]
+                    <p>avec :</p>
+                    <ul>
+                        <li>\(A_s\) = section des armatures complémentaires</li>
+                        <li>\(f_{sd,fi} = f_{yk}\) (pas de \(\gamma_s\) en situation accidentelle)</li>
+                        <li>\(z_{fi} \approx 0.9 \times d_s\)</li>
+                    </ul>
+                </div>
+
+                <h3>6.3.1 Charge en Situation de Feu</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Combinaison accidentelle</h4>
+                    \[q_{fi} = g + \psi_1 \cdot q\]
+                    <p>avec \(\psi_1 = 0.5\) pour bureaux, \(\psi_1 = 0.7\) pour zones de stockage.</p>
+                </div>
+
+                <h3>6.3.2 Armatures Complémentaires</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Section d'armatures requise</h4>
+                    \[A_s = \frac{M_{fi,Ed}}{0.9 \cdot d_s \cdot f_{yk}}\]
+                </div>
+
+                <h2>6.4 Exigences Géométriques</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Durée feu</th>
+                                <th>Épaisseur min \(h_c\)</th>
+                                <th>Position armatures</th>
+                                <th>Armatures types</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>R30</strong></td>
+                                <td>60 mm</td>
+                                <td>—</td>
+                                <td>Treillis standard</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>R60</strong></td>
+                                <td>70 mm</td>
+                                <td>Dans nervures</td>
+                                <td>HA 8 ou 10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>R90</strong></td>
+                                <td>80 mm</td>
+                                <td>Dans nervures</td>
+                                <td>HA 10 ou 12</td>
+                            </tr>
+                            <tr>
+                                <td><strong>R120</strong></td>
+                                <td>90 mm</td>
+                                <td>Dans nervures</td>
+                                <td>HA 12 ou 14</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box example">
+                    <h4>💡 Exemple : Dimensionnement au feu R60</h4>
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Portée : \(L = 3.0\) m</li>
+                        <li>Épaisseur totale : \(h_t = 140\) mm, \(h_c = 80\) mm</li>
+                        <li>Charge permanente : \(g = 4.0\) kN/m², variable : \(q = 2.5\) kN/m²</li>
+                    </ul>
+
+                    <p><strong>Charge en situation de feu :</strong></p>
+                    \[q_{fi} = 4.0 + 0.5 \times 2.5 = 5.25 \text{ kN/m²}\]
+
+                    <p><strong>Moment en situation de feu :</strong></p>
+                    \[M_{fi,Ed} = \frac{5.25 \times 3.0^2}{8} = 5.9 \text{ kN.m/m}\]
+
+                    <p><strong>Armatures requises</strong> (avec \(d_s = 126\) mm, \(f_{yk} = 500\) MPa) :</p>
+                    \[A_s = \frac{5.9 \times 10^6}{0.9 \times 126 \times 500} = 104 \text{ mm²/m}\]
+
+                    <p><strong>Choix :</strong> 1 HA 8 par nervure (5 nervures/m) → \(A_s = 251\) mm²/m ✓</p>
+                </div>
+
+                <div style="text-align: center; margin: var(--space-xl) 0;">
+                    <a href="calculateurs.html#calc-feu" class="btn btn-primary">
+                        🔥 Utiliser le calculateur feu
+                    </a>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre5.html" class="nav-btn prev">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Chapitre 5 : ELS</span>
+                    </a>
+                    <a href="exercices.html" class="nav-btn next">
+                        <span>Exercices résolus</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phase construction des planchers mixtes - Vérification de la tôle seule">
+    <title>Phase Construction | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html" class="active">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 3</span>
+            </div>
+            <h1>Chapitre 3 : Phase Construction</h1>
+            <p>Vérification de la tôle seule avant durcissement du béton</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>3.1 Principe</h2>
+
+                <p>Avant durcissement du béton, le bac acier travaille <strong>seul</strong> et doit résister :</p>
+                <ul>
+                    <li>Au poids propre du bac</li>
+                    <li>Au poids du béton frais</li>
+                    <li>Aux charges de chantier (personnel, équipements)</li>
+                </ul>
+
+                <h2>3.2 Charges en Phase Construction</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Charges de chantier (EC4 §9.3.2)</h4>
+                    <ul>
+                        <li>Charge concentrée : \(Q_c = 1.5\) kN (sur 300×300 mm)</li>
+                        <li>Charge répartie hors zone de travail : \(q_c = 0.75\) kN/m²</li>
+                        <li>Charge répartie zone de travail : \(q_c = 1.5\) kN/m² (sur 3×3 m)</li>
+                    </ul>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Charge</th>
+                                <th>Valeur</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Poids bac acier</td>
+                                <td>0.10-0.17 kN/m²</td>
+                                <td>Permanente</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>Poids béton frais</td>
+                                <td>\(25 \times h_t\) kN/m³</td>
+                                <td>Permanente</td>
+                            </tr>
+                            <tr>
+                                <td>Surcharge chantier</td>
+                                <td>1.5 kN/m²</td>
+                                <td>Variable</td>
+                            </tr>
+                            <tr>
+                                <td>Effet de flaque</td>
+                                <td>Variable</td>
+                                <td>Permanente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>3.3 Effet de Flaque (Ponding)</h2>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Attention - Ponding</h4>
+                    <p>Lorsque la flèche du bac dépasse \(L/250\) ou 20 mm, il faut tenir compte de l'accumulation de
+                        béton dans le creux.</p>
+                </div>
+
+                <div class="info-box formula">
+                    <h4>📐 Supplément de béton dû au ponding</h4>
+                    \[\Delta h = 0.7 \times \delta_0\]
+                    <p>où \(\delta_0\) est la flèche initiale sous poids propre du bac seul.</p>
+                </div>
+
+                <h2>3.4 Vérifications ELU</h2>
+
+                <h3>3.4.1 Résistance en Flexion</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Moment résistant du bac acier</h4>
+                    \[M_{pa,Rd} = \frac{W_{eff} \cdot f_{yp}}{\gamma_{M0}}\]
+                    <p>où \(W_{eff}\) est le module de résistance effectif (tenant compte du voilement local).</p>
+                </div>
+
+                <h3>3.4.2 Combinaison ELU</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Charge pondérée</h4>
+                    \[p_{Ed} = 1.35 \times (g_{bac} + g_{béton}) + 1.5 \times q_{chantier}\]
+
+                    <p><strong>Moment sollicitant :</strong></p>
+                    \[M_{Ed} = \frac{p_{Ed} \cdot L^2}{8}\]
+
+                    <p><strong>Condition :</strong> \(M_{Ed} \leq M_{pa,Rd}\)</p>
+                </div>
+
+                <h2>3.5 Vérifications ELS</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Flèche maximale admissible</h4>
+                    \[\delta_{max} \leq \min\left(\frac{L}{180} \;;\; \frac{L}{150} + 10\text{ mm}\right)\]
+                </div>
+
+                <div class="info-box example">
+                    <h4>💡 Exemple : Vérification en phase construction</h4>
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Bac Cofraplus 60 (0.88 mm) : \(M_{pa,Rd} = 8.5\) kN.m/m</li>
+                        <li>Portée sans étaiement : \(L = 2.80\) m</li>
+                        <li>Épaisseur totale : \(h_t = 140\) mm</li>
+                    </ul>
+
+                    <p><strong>Charges :</strong></p>
+                    \[g_{bac} = 0.12 \text{ kN/m²}\]
+                    \[g_{béton} = 25 \times 0.140 = 3.50 \text{ kN/m²}\]
+                    \[q_{chantier} = 1.5 \text{ kN/m²}\]
+
+                    <p><strong>Combinaison ELU :</strong></p>
+                    \[p_{Ed} = 1.35 \times (0.12 + 3.50) + 1.5 \times 1.5 = 7.14 \text{ kN/m²}\]
+
+                    <p><strong>Moment sollicitant :</strong></p>
+                    \[M_{Ed} = \frac{7.14 \times 2.80^2}{8} = 7.0 \text{ kN.m/m}\]
+
+                    <p><strong>Vérification :</strong></p>
+                    \[\frac{M_{Ed}}{M_{pa,Rd}} = \frac{7.0}{8.5} = 0.82 < 1.0 \quad \checkmark\] </div>
+
+                        <div style="text-align: center; margin: var(--space-xl) 0;">
+                            <a href="calculateurs.html#calc-construction" class="btn btn-primary">
+                                🧮 Utiliser le calculateur phase construction
+                            </a>
+                        </div>
+
+                        <div class="chapter-navigation">
+                            <a href="chapitre2.html" class="nav-btn prev">
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor"
+                                        d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                                </svg>
+                                <span>Chapitre 2 : Composants</span>
+                            </a>
+                            <a href="chapitre4.html" class="nav-btn next">
+                                <span>Chapitre 4 : ELU</span>
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor"
+                                        d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                                </svg>
+                            </a>
+                        </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

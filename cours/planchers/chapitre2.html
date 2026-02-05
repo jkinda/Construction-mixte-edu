@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Composants du plancher mixte - Bacs acier, béton et armatures">
+    <title>Composants | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html" class="active">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 2</span>
+            </div>
+            <h1>Chapitre 2 : Composants du Plancher Mixte</h1>
+            <p>Bacs acier, béton, armatures et géométrie</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>2.1 Tôle d'Acier Nervurée (Bac Acier)</h2>
+
+                <h3>2.1.1 Caractéristiques Géométriques</h3>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Paramètre</th>
+                                <th>Symbole</th>
+                                <th>Cofraplus 60</th>
+                                <th>Cofrastra 70</th>
+                                <th>Unité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hauteur nervure</td>
+                                <td>\(h_p\)</td>
+                                <td>60</td>
+                                <td>73</td>
+                                <td>mm</td>
+                            </tr>
+                            <tr>
+                                <td>Entraxe nervures</td>
+                                <td>\(b_r\)</td>
+                                <td>207</td>
+                                <td>150</td>
+                                <td>mm</td>
+                            </tr>
+                            <tr>
+                                <td>Largeur fond nervure</td>
+                                <td>\(b_0\)</td>
+                                <td>62</td>
+                                <td>92</td>
+                                <td>mm</td>
+                            </tr>
+                            <tr>
+                                <td>Épaisseur nominale</td>
+                                <td>\(t_{nom}\)</td>
+                                <td>0.75-1.25</td>
+                                <td>0.75-1.25</td>
+                                <td>mm</td>
+                            </tr>
+                            <tr>
+                                <td>Poids</td>
+                                <td>-</td>
+                                <td>9.8-16.5</td>
+                                <td>10.5-17.5</td>
+                                <td>kg/m²</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2.1.2 Propriétés Mécaniques</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Acier du bac selon EN 10326</h4>
+                    <p><strong>Limite d'élasticité :</strong> \(f_{yp} = 280\) à \(350\) MPa</p>
+                    <p><strong>Module d'élasticité :</strong> \(E_p = 210\,000\) MPa</p>
+                    <p><strong>Coefficient de sécurité :</strong> \(\gamma_{M0} = 1.0\)</p>
+                </div>
+
+                <h2>2.2 Béton</h2>
+
+                <p>Le béton du plancher mixte doit être de classe minimale <strong>C20/25</strong> (recommandé C25/30 à
+                    C30/37).</p>
+
+                <div class="info-box formula">
+                    <h4>📐 Valeurs de calcul du béton</h4>
+                    \[f_{cd} = \frac{f_{ck}}{\gamma_C} = \frac{f_{ck}}{1.5}\]
+                    \[E_{cm} = 22\,000 \left(\frac{f_{cm}}{10}\right)^{0.3} \text{ MPa}\]
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Classe</th>
+                                <th>\(f_{ck}\) (MPa)</th>
+                                <th>\(f_{cd}\) (MPa)</th>
+                                <th>\(E_{cm}\) (GPa)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C20/25</td>
+                                <td>20</td>
+                                <td>13.3</td>
+                                <td>30.0</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>C25/30</td>
+                                <td>25</td>
+                                <td>16.7</td>
+                                <td>31.5</td>
+                            </tr>
+                            <tr>
+                                <td>C30/37</td>
+                                <td>30</td>
+                                <td>20.0</td>
+                                <td>33.0</td>
+                            </tr>
+                            <tr>
+                                <td>C35/45</td>
+                                <td>35</td>
+                                <td>23.3</td>
+                                <td>34.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>2.3 Armatures</h2>
+
+                <h3>2.3.1 Treillis Soudé Anti-fissuration</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Section minimale d'armatures</h4>
+                    \[A_{s,min} = 0.002 \times A_c = 0.002 \times b \times h_c\]
+                    <p>Treillis courant : <strong>ST25C</strong> (2.57 cm²/m) ou <strong>ST35C</strong> (3.85 cm²/m)</p>
+                </div>
+
+                <h3>2.3.2 Armatures Complémentaires</h3>
+
+                <p>Nécessaires pour :</p>
+                <ul>
+                    <li>La résistance au feu (dans les nervures)</li>
+                    <li>Les moments négatifs sur appuis continus</li>
+                    <li>Le renforcement au cisaillement</li>
+                </ul>
+
+                <h2>2.4 Géométrie du Plancher</h2>
+
+                <div class="info-box definition">
+                    <h4>📖 Notations géométriques</h4>
+                    <ul>
+                        <li>\(h_t\) = épaisseur totale du plancher</li>
+                        <li>\(h_c\) = épaisseur de béton au-dessus des nervures</li>
+                        <li>\(h_p\) = hauteur des nervures (profondeur du bac)</li>
+                        <li>\(b_r\) = entraxe des nervures</li>
+                        <li>\(b_0\) = largeur du fond de nervure</li>
+                        <li>\(d_p\) = hauteur utile = \(h_t - e\) (e = enrobage)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box example">
+                    <h4>💡 Épaisseurs courantes</h4>
+                    <table class="data-table" style="margin-top: 0.5rem;">
+                        <thead>
+                            <tr>
+                                <th>Application</th>
+                                <th>\(h_c\) min</th>
+                                <th>\(h_t\) typique</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bureaux courants</td>
+                                <td>50 mm</td>
+                                <td>120-140 mm</td>
+                            </tr>
+                            <tr>
+                                <td>Bureaux + parking</td>
+                                <td>70 mm</td>
+                                <td>140-160 mm</td>
+                            </tr>
+                            <tr>
+                                <td>ERP, IGH</td>
+                                <td>80-90 mm</td>
+                                <td>160-180 mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre1.html" class="nav-btn prev">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Chapitre 1 : Introduction</span>
+                    </a>
+                    <a href="chapitre3.html" class="nav-btn next">
+                        <span>Chapitre 3 : Phase Construction</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exercices résolus sur le dimensionnement des poutres mixtes selon l'Eurocode 4">
+    <title>Exercices | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Poutres Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html" class="active">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><span>Exercices</span>
+            </div>
+            <h1>Exercices Résolus</h1>
+            <p>Applications pratiques avec solutions détaillées étape par étape</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <span class="exercise-number">Exercice 1</span>
+                    <div class="exercise-difficulty">
+                        <span class="difficulty-star filled">★</span>
+                        <span class="difficulty-star filled">★</span>
+                        <span class="difficulty-star">★</span>
+                    </div>
+                </div>
+
+                <h3>Poutre de Plancher de Bureau</h3>
+
+                <div class="exercise-content">
+                    <p><strong>Objectif :</strong> Dimensionner une poutre mixte de plancher de bureau en vérifiant
+                        l'ELU et l'ELS.</p>
+
+                    <div class="exercise-data">
+                        <h5>📋 Données</h5>
+                        <ul>
+                            <li>Portée : \(L = 10\) m (travée simple)</li>
+                            <li>Entraxe entre poutres : 3.0 m</li>
+                            <li>Dalle béton C30/37 : épaisseur \(h_c = 120\) mm</li>
+                            <li>Bac acier Cofraplus 60 : \(h_p = 60\) mm</li>
+                            <li>Charges permanentes (hors PP) : \(G' = 1.5\) kN/m²</li>
+                            <li>Charges d'exploitation : \(Q = 3.5\) kN/m² (bureaux)</li>
+                            <li>Profilé envisagé : IPE 400, acier S355</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Questions :</strong></p>
+                    <ol>
+                        <li>Calculer les charges et le moment sollicitant ELU</li>
+                        <li>Déterminer la largeur participante</li>
+                        <li>Vérifier le moment résistant plastique</li>
+                        <li>Calculer le nombre de goujons requis</li>
+                        <li>Vérifier la flèche ELS</li>
+                    </ol>
+                </div>
+
+                <button class="solution-toggle">Voir la solution</button>
+
+                <div class="solution-content">
+                    <div class="solution-step">
+                        <h5>Étape 1 : Évaluation des Charges</h5>
+                        <p><strong>Poids propre de la dalle mixte :</strong></p>
+                        \[g_{dalle} = (h_c + h_p/2) \times 25 = (0.12 + 0.03) \times 25 = 3.75 \text{ kN/m²}\]
+
+                        <p><strong>Charges linéiques sur la poutre :</strong></p>
+                        \[g_k = (3.75 + 1.5) \times 3.0 = 15.75 \text{ kN/m}\]
+                        \[q_k = 3.5 \times 3.0 = 10.5 \text{ kN/m}\]
+
+                        <p>Estimation poids propre poutre IPE 400 : ≈ 1.0 kN/m</p>
+
+                        <p><strong>Charge pondérée ELU :</strong></p>
+                        \[p_{Ed} = 1.35 \times (15.75 + 1.0) + 1.5 \times 10.5 = 22.61 + 15.75 = 38.36 \text{ kN/m}\]
+
+                        <p><strong>Moment sollicitant :</strong></p>
+                        \[\boxed{M_{Ed} = \frac{p_{Ed} \cdot L^2}{8} = \frac{38.36 \times 10^2}{8} = 479.5 \text{
+                        kN.m}}\]
+                    </div>
+
+                    <div class="solution-step">
+                        <h5>Étape 2 : Largeur Participante</h5>
+                        <p>Pour une travée simple : \(L_e = L = 10\) m</p>
+                        \[b_{ei} = \min\left(\frac{10000}{8}, \frac{3000}{2}\right) = \min(1250, 1500) = 1250 \text{
+                        mm}\]
+                        \[b_{eff} = 2 \times 1250 = 2500 \text{ mm}\]
+                    </div>
+
+                    <div class="solution-step">
+                        <h5>Étape 3 : Moment Résistant Plastique</h5>
+                        <p><strong>Données IPE 400, S355 :</strong> \(A_a = 84.5\) cm², \(h_a = 400\) mm</p>
+
+                        <p><strong>Forces plastiques :</strong></p>
+                        \[N_{a,pl} = 84.5 \times 10^{-4} \times 355 \times 10^3 = 3000 \text{ kN}\]
+                        \[N_{c,f} = 0.85 \times 20 \times 2500 \times 120 \times 10^{-3} = 5100 \text{ kN}\]
+
+                        <p>\(N_{c,f} > N_{a,pl}\) → <strong>ANP dans la dalle</strong></p>
+
+                        <p><strong>Position ANP :</strong></p>
+                        \[z_{pl} = \frac{3000 \times 10^3}{0.85 \times 20 \times 2500} = 70.6 \text{ mm} < 120 \text{ mm
+                            ✓}\] <p><strong>Bras de levier :</strong></p>
+                            \[d = \frac{400}{2} + 120 + 60 - \frac{70.6}{2} = 344.7 \text{ mm}\]
+
+                            <p><strong>Moment résistant :</strong></p>
+                            \[\boxed{M_{pl,Rd} = 3000 \times 0.3447 = 1034 \text{ kN.m}}\]
+
+                            <p><strong>Vérification :</strong></p>
+                            \[\frac{M_{Ed}}{M_{pl,Rd}} = \frac{479.5}{1034} = 0.46 < 1.0 \quad \checkmark\] </div>
+
+                                <div class="solution-step">
+                                    <h5>Étape 4 : Connexion</h5>
+                                    <p><strong>Effort à transférer :</strong> \(V_\ell = N_{a,pl} = 3000\) kN</p>
+
+                                    <p><strong>Résistance goujons ∅19, \(f_u = 450\) MPa :</strong></p>
+                                    \[P_{Rd} = 81.7 \text{ kN}\]
+
+                                    <p><strong>Nombre par demi-travée :</strong></p>
+                                    \[n = \frac{3000}{81.7} = 36.7 \rightarrow \boxed{37 \text{ goujons}}\]
+
+                                    <p>Soit <strong>74 goujons</strong> sur toute la poutre, entraxe ≈ 135 mm</p>
+                                </div>
+
+                                <div class="solution-step">
+                                    <h5>Étape 5 : Vérification Flèche ELS</h5>
+                                    <p><strong>Coefficient d'équivalence :</strong> \(n_0 = 6.36\)</p>
+
+                                    <p><strong>Inertie mixte :</strong> \(I_{eq} \approx 92\,240\) cm⁴</p>
+
+                                    <p><strong>Flèche :</strong></p>
+                                    \[\delta = \frac{5 \times 26.25 \times 10^4}{384 \times 210 \times 92240} = 17.6
+                                    \text{ mm}\]
+
+                                    <p><strong>Limite :</strong></p>
+                                    \[\delta_{lim} = \frac{L}{250} = 40 \text{ mm}\]
+
+                                    \[\boxed{\delta = 17.6 \text{ mm} < 40 \text{ mm} \quad \checkmark}\] </div>
+                                </div>
+                    </div>
+
+                    <!-- Exercice 2 -->
+                    <div class="exercise-card">
+                        <div class="exercise-header">
+                            <span class="exercise-number">Exercice 2</span>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-star filled">★</span>
+                                <span class="difficulty-star">★</span>
+                                <span class="difficulty-star">★</span>
+                            </div>
+                        </div>
+
+                        <h3>Calcul de Goujons</h3>
+
+                        <div class="exercise-content">
+                            <p><strong>Objectif :</strong> Calculer la résistance d'un goujon et déterminer le nombre
+                                requis.</p>
+
+                            <div class="exercise-data">
+                                <h5>📋 Données</h5>
+                                <ul>
+                                    <li>Goujon : ∅22 mm, hauteur 125 mm après soudage</li>
+                                    <li>Résistance traction : \(f_u = 450\) MPa</li>
+                                    <li>Béton C35/45 : \(f_{ck} = 35\) MPa, \(E_{cm} = 34000\) MPa</li>
+                                    <li>Effort à transférer : \(V_\ell = 3500\) kN (par demi-travée)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button class="solution-toggle">Voir la solution</button>
+
+                        <div class="solution-content">
+                            <div class="solution-step">
+                                <h5>Calcul de la résistance du goujon</h5>
+
+                                <p><strong>Coefficient α :</strong></p>
+                                \[\frac{h_{sc}}{d} = \frac{125}{22} = 5.68 > 4 \Rightarrow \alpha = 1.0\]
+
+                                <p><strong>Rupture acier :</strong></p>
+                                \[P_{Rd,1} = \frac{0.8 \times 450 \times \pi \times 22^2/4}{1.25 \times 1000} = 109.5
+                                \text{ kN}\]
+
+                                <p><strong>Écrasement béton :</strong></p>
+                                \[P_{Rd,2} = \frac{0.29 \times 1.0 \times 22^2 \times \sqrt{35 \times 34000}}{1.25
+                                \times 1000} = 121.8 \text{ kN}\]
+
+                                \[\boxed{P_{Rd} = \min(109.5, 121.8) = 109.5 \text{ kN}}\]
+
+                                <p><strong>Nombre de goujons :</strong></p>
+                                \[n = \frac{3500}{109.5} = 32.0 \rightarrow \boxed{32 \text{ goujons par demi-travée}}\]
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercice 3 -->
+                    <div class="exercise-card">
+                        <div class="exercise-header">
+                            <span class="exercise-number">Exercice 3</span>
+                            <div class="exercise-difficulty">
+                                <span class="difficulty-star filled">★</span>
+                                <span class="difficulty-star filled">★</span>
+                                <span class="difficulty-star filled">★</span>
+                            </div>
+                        </div>
+
+                        <h3>Poutre avec Connexion Partielle</h3>
+
+                        <div class="exercise-content">
+                            <p><strong>Objectif :</strong> Vérifier une poutre mixte en connexion partielle.</p>
+
+                            <div class="exercise-data">
+                                <h5>📋 Données</h5>
+                                <ul>
+                                    <li>IPE 330, S355, portée 8 m</li>
+                                    <li>Dalle C30/37, \(h_c = 100\) mm, \(b_{eff} = 2000\) mm</li>
+                                    <li>20 goujons ∅19 par demi-travée (\(P_{Rd} = 81.7\) kN)</li>
+                                    <li>Moment sollicitant : \(M_{Ed} = 350\) kN.m</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button class="solution-toggle">Voir la solution</button>
+
+                        <div class="solution-content">
+                            <div class="solution-step">
+                                <h5>Étape 1 : Forces plastiques</h5>
+                                <p>IPE 330 : \(A_a = 62.6\) cm², \(W_{pl,y} = 804\) cm³</p>
+                                \[N_{a,pl} = 62.6 \times 10^{-4} \times 355 \times 10^3 = 2222 \text{ kN}\]
+                                \[N_{c,f} = 0.85 \times 20 \times 2000 \times 100 \times 10^{-3} = 3400 \text{ kN}\]
+                            </div>
+
+                            <div class="solution-step">
+                                <h5>Étape 2 : Degré de connexion</h5>
+                                <p>\(V_\ell = N_{a,pl} = 2222\) kN (connexion complète)</p>
+                                \[\eta = \frac{n \times P_{Rd}}{V_\ell} = \frac{20 \times 81.7}{2222} = 0.735\]
+
+                                <p><strong>Vérification du degré minimal :</strong></p>
+                                \[\eta_{min} = 1 - \frac{355}{355}(0.75 - 0.03 \times 8) = 1 - 0.51 = 0.49\]
+                                \[\eta = 0.735 > 0.49 \quad \checkmark\]
+                            </div>
+
+                            <div class="solution-step">
+                                <h5>Étape 3 : Moment résistant réduit</h5>
+                                <p><strong>Moment acier seul :</strong></p>
+                                \[M_{a,pl,Rd} = W_{pl,y} \times f_{yd} = 804 \times 10^{-3} \times 355 = 285.4 \text{
+                                kN.m}\]
+
+                                <p><strong>Moment connexion complète</strong> (calculé à 580 kN.m)</p>
+
+                                <p><strong>Moment réduit :</strong></p>
+                                \[M_{Rd} = 285.4 + 0.735 \times (580 - 285.4) = 285.4 + 216.5 = 502 \text{ kN.m}\]
+
+                                <p><strong>Vérification :</strong></p>
+                                \[\frac{M_{Ed}}{M_{Rd}} = \frac{350}{502} = 0.70 < 1.0 \quad \boxed{\checkmark}\] </div>
+                            </div>
+                        </div>
+
+                    </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Toggle solutions
+        document.querySelectorAll('.solution-toggle').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const solution = this.nextElementSibling;
+                solution.classList.toggle('active');
+                this.textContent = solution.classList.contains('active') ?
+                    'Masquer la solution' : 'Voir la solution';
+            });
+        });
+    </script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

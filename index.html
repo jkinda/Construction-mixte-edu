@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cours de Construction Mixte - ESUP J">
+    <title>Connexion | Construction Mixte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 50%, #4a90a4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, #1e3a5f, #2d5a8a);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .login-form {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2d5a8a;
+            box-shadow: 0 0 0 4px rgba(45, 90, 138, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #2d5a8a, #4a90a4);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(45, 90, 138, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c00;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 20px 30px 30px;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+
+        .courses-preview {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .course-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #2d5a8a;
+            font-weight: 500;
+        }
+
+        .course-badge span {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-icon">🏗️</div>
+            <h1>Construction Mixte</h1>
+            <p>Cours interactif - Poutres et Planchers Mixtes</p>
+        </div>
+
+        <form class="login-form" id="loginForm" onsubmit="return handleLogin(event)">
+            <div class="error-message" id="errorMessage">
+                Accès non autorisé. Veuillez contacter l'administrateur.
+            </div>
+
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="votre.email@exemple.com" required>
+            </div>
+
+            <button type="submit" class="btn-login">Accéder au cours</button>
+        </form>
+
+        <div class="login-footer">
+            <p>Accès réservé aux utilisateurs autorisés</p>
+            <div class="courses-preview">
+                <div class="course-badge">
+                    <span>🔩</span> Poutres Mixtes
+                </div>
+                <div class="course-badge">
+                    <span>🏢</span> Planchers Mixtes
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth/auth.js"></script>
+    <script>
+        // Vérifier si déjà connecté
+        if (isAuthenticated()) {
+            window.location.href = 'accueil.html';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const nom = document.getElementById('nom').value.trim();
+            const prenom = document.getElementById('prenom').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+
+            if (validateAccess(email)) {
+                // Stocker la session
+                saveSession(nom, prenom, email);
+                window.location.href = 'accueil.html';
+            } else {
+                document.getElementById('errorMessage').classList.add('show');
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

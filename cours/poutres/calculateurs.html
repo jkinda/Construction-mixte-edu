@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Calculateurs interactifs pour le dimensionnement des poutres mixtes selon l'Eurocode 4">
+    <title>Calculateurs | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo">
+                <span class="logo-icon">🏗️</span>
+                <span>Poutres Mixtes</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html" class="active">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a>
+                <span class="separator">/</span>
+                <span>Calculateurs</span>
+            </div>
+            <h1>Calculateurs Interactifs</h1>
+            <p>Outils de dimensionnement selon l'Eurocode 4</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="calculator-section">
+        <div class="container">
+
+            <!-- Calculateur Moment Résistant -->
+            <div class="calculator-card" id="calc-moment">
+                <h3>🔧 Moment Résistant Plastique M<sub>pl,Rd</sub></h3>
+                <p style="color: var(--gray-600); margin-bottom: var(--space-lg);">
+                    Calcul du moment résistant plastique d'une section mixte pour les sections de classe 1 ou 2.
+                </p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="profil-moment">Profilé acier</label>
+                        <select id="profil-moment" class="profil-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="acier-moment">Nuance d'acier</label>
+                        <select id="acier-moment" class="acier-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beton-moment">Classe de béton</label>
+                        <select id="beton-moment" class="beton-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beff-moment">Largeur participante b<sub>eff</sub></label>
+                        <input type="number" id="beff-moment" value="1500" min="100" step="10">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-moment">Épaisseur dalle h<sub>c</sub></label>
+                        <input type="number" id="hc-moment" value="120" min="50" step="5">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="hp-moment">Hauteur bac acier h<sub>p</sub></label>
+                        <input type="number" id="hp-moment" value="55" min="0" step="5">
+                        <span class="unit">mm (0 si dalle pleine)</span>
+                    </div>
+                </div>
+
+                <button class="btn-calculate" id="btn-calc-moment">
+                    Calculer M<sub>pl,Rd</sub>
+                </button>
+
+                <div class="results-panel" id="results-moment" style="display: none;"></div>
+
+                <div class="info-box formula" style="margin-top: var(--space-xl);">
+                    <h4>📐 Formules utilisées</h4>
+                    <p><strong>Position ANP dans la dalle :</strong></p>
+                    \[z_{pl} = \frac{A_a \cdot f_{yd}}{0.85 \cdot f_{cd} \cdot b_{eff}}\]
+                    <p><strong>Moment résistant :</strong></p>
+                    \[M_{pl,Rd} = A_a \cdot f_{yd} \cdot d\]
+                    <p>avec \(d = h_a/2 + h_c + h_p - z_{pl}/2\)</p>
+                </div>
+            </div>
+
+            <!-- Calculateur Goujons -->
+            <div class="calculator-card" id="calc-goujons">
+                <h3>🔩 Résistance des Goujons et Connexion</h3>
+                <p style="color: var(--gray-600); margin-bottom: var(--space-lg);">
+                    Calcul de la résistance d'un goujon à tête et du nombre de goujons requis.
+                </p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="diametre-goujon">Diamètre du goujon d</label>
+                        <input type="number" id="diametre-goujon" value="19" min="13" max="25" step="1">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="hauteur-goujon">Hauteur après soudage h<sub>sc</sub></label>
+                        <input type="number" id="hauteur-goujon" value="100" min="50" step="5">
+                        <span class="unit">mm (≥ 3d)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="fu-goujon">Résistance traction f<sub>u</sub></label>
+                        <input type="number" id="fu-goujon" value="450" min="400" max="500" step="10">
+                        <span class="unit">MPa</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="beton-goujon">Classe de béton</label>
+                        <select id="beton-goujon" class="beton-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vl-goujon">Effort à transférer V<sub>ℓ</sub></label>
+                        <input type="number" id="vl-goujon" value="2500" min="0" step="50">
+                        <span class="unit">kN (par demi-travée)</span>
+                    </div>
+                </div>
+
+                <button class="btn-calculate" id="btn-calc-goujons">
+                    Calculer P<sub>Rd</sub> et nombre de goujons
+                </button>
+
+                <div class="results-panel" id="results-goujons" style="display: none;"></div>
+
+                <div class="info-box formula" style="margin-top: var(--space-xl);">
+                    <h4>📐 Formules utilisées (EC4 §6.6.3.1)</h4>
+                    <p><strong>Résistance au cisaillement :</strong></p>
+                    \[P_{Rd} = \min\left(\frac{0.8 \cdot f_u \cdot \pi d^2/4}{\gamma_V}, \frac{0.29 \cdot \alpha \cdot
+                    d^2 \cdot \sqrt{f_{ck} \cdot E_{cm}}}{\gamma_V}\right)\]
+                    <p>avec \(\gamma_V = 1.25\) et \(\alpha = 1\) si \(h_{sc}/d > 4\)</p>
+                </div>
+            </div>
+
+            <!-- Calculateur Flèche -->
+            <div class="calculator-card" id="calc-fleche">
+                <h3>📏 Calcul de Flèche ELS</h3>
+                <p style="color: var(--gray-600); margin-bottom: var(--space-lg);">
+                    Vérification de la flèche à l'état limite de service avec prise en compte du fluage.
+                </p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="profil-fleche">Profilé acier</label>
+                        <select id="profil-fleche" class="profil-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beton-fleche">Classe de béton</label>
+                        <select id="beton-fleche" class="beton-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beff-fleche">Largeur participante b<sub>eff</sub></label>
+                        <input type="number" id="beff-fleche" value="1500" min="100" step="10">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-fleche">Épaisseur dalle h<sub>c</sub></label>
+                        <input type="number" id="hc-fleche" value="120" min="50" step="5">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="hp-fleche">Hauteur bac acier h<sub>p</sub></label>
+                        <input type="number" id="hp-fleche" value="55" min="0" step="5">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="portee-fleche">Portée L</label>
+                        <input type="number" id="portee-fleche" value="8000" min="1000" step="100">
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="charge-fleche">Charge de service q</label>
+                        <input type="number" id="charge-fleche" value="25" min="1" step="1">
+                        <span class="unit">kN/m</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="fluage-fleche">Coefficient de fluage φ<sub>t</sub></label>
+                        <input type="number" id="fluage-fleche" value="2.0" min="0" max="4" step="0.1">
+                        <span class="unit">(EC2, typique 1.5-2.5)</span>
+                    </div>
+                </div>
+
+                <button class="btn-calculate" id="btn-calc-fleche">
+                    Calculer la flèche
+                </button>
+
+                <div class="results-panel" id="results-fleche" style="display: none;"></div>
+
+                <div class="info-box formula" style="margin-top: var(--space-xl);">
+                    <h4>📐 Formules utilisées</h4>
+                    <p><strong>Flèche poutre uniformément chargée :</strong></p>
+                    \[\delta = \frac{5 \cdot q \cdot L^4}{384 \cdot E_a \cdot I_{eq}}\]
+                    <p><strong>Limites recommandées :</strong> L/350 (instantanée), L/250 (totale)</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cours Interactif</h4>
+                    <p>Dimensionnement des poutres mixtes acier-béton selon l'Eurocode 4</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Références</h4>
+                    <ul>
+                        <li>EN 1994-1-1 (Eurocode 4)</li>
+                        <li>EN 1993-1-1 (Eurocode 3)</li>
+                        <li>EN 1992-1-1 (Eurocode 2)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/calculateurs.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

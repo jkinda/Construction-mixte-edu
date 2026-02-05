@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulaire de référence pour planchers mixtes">
+    <title>Formulaire | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html" class="active">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Formulaire de Référence</h1>
+            <p>Toutes les formules essentielles pour le dimensionnement des planchers mixtes</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+
+            <!-- PHASE CONSTRUCTION -->
+            <section class="formulaire-section">
+                <h3>🏗️ Phase Construction (Tôle seule)</h3>
+
+                <div class="formula-row">
+                    <span class="formula-name">Moment résistant bac</span>
+                    <span class="formula-equation">\(M_{pa,Rd} = \dfrac{W_{eff} \cdot f_{yp}}{\gamma_{M0}}\)</span>
+                    <span class="formula-ref">EN 1993-1-3</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Charge ELU</span>
+                    <span class="formula-equation">\(p_{Ed} = 1.35 \cdot (g_{bac} + g_{béton}) + 1.5 \cdot
+                        q_{chantier}\)</span>
+                    <span class="formula-ref">EC4 §9.3.2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Moment sollicitant</span>
+                    <span class="formula-equation">\(M_{Ed} = \dfrac{p_{Ed} \cdot L^2}{8}\)</span>
+                    <span class="formula-ref">Isostatique</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Flèche limite</span>
+                    <span class="formula-equation">\(\delta \leq \min\left(\dfrac{L}{180}, \dfrac{L}{150} + 10\text{
+                        mm}\right)\)</span>
+                    <span class="formula-ref">EC4 §9.6</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Supplément ponding</span>
+                    <span class="formula-equation">\(\Delta h = 0.7 \cdot \delta_0\)</span>
+                    <span class="formula-ref">EC4 §9.3.2</span>
+                </div>
+            </section>
+
+            <!-- PHASE MIXTE - ELU -->
+            <section class="formulaire-section">
+                <h3>⚡ Phase Mixte - État Limite Ultime</h3>
+
+                <h4>Forces plastiques</h4>
+
+                <div class="formula-row">
+                    <span class="formula-name">Traction bac acier</span>
+                    <span class="formula-equation">\(N_{pa} = A_p \cdot f_{yp}\)</span>
+                    <span class="formula-ref">EC4 §9.7.2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Compression béton max</span>
+                    <span class="formula-equation">\(N_{cf} = 0.85 \cdot f_{cd} \cdot b \cdot h_c\)</span>
+                    <span class="formula-ref">EC4 §9.7.2</span>
+                </div>
+
+                <h4>Moment résistant (ANP dans le béton)</h4>
+
+                <div class="formula-row">
+                    <span class="formula-name">Position ANP</span>
+                    <span class="formula-equation">\(x_{pl} = \dfrac{N_{pa}}{0.85 \cdot f_{cd} \cdot b}\)</span>
+                    <span class="formula-ref">EC4 §9.7.2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Bras de levier</span>
+                    <span class="formula-equation">\(z = h_t - \dfrac{x_{pl}}{2} - e_p\)</span>
+                    <span class="formula-ref">EC4 §9.7.2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Moment résistant</span>
+                    <span class="formula-equation">\(M_{pl,Rd} = N_{pa} \cdot z\)</span>
+                    <span class="formula-ref">EC4 §9.7.2</span>
+                </div>
+
+                <h4>Cisaillement</h4>
+
+                <div class="formula-row">
+                    <span class="formula-name">Méthode m-k</span>
+                    <span class="formula-equation">\(\dfrac{V_\ell}{b \cdot d_p} = m \cdot \dfrac{A_p}{b \cdot L_s} +
+                        k\)</span>
+                    <span class="formula-ref">EC4 §9.7.3</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Cisaillement vertical</span>
+                    <span class="formula-equation">\(V_{Rd} = b_0 \cdot d_p \cdot k_v \cdot \sqrt{f_{ck}}\)</span>
+                    <span class="formula-ref">EC4 §9.7.5</span>
+                </div>
+            </section>
+
+            <!-- PHASE MIXTE - ELS -->
+            <section class="formulaire-section">
+                <h3>📏 Phase Mixte - État Limite de Service</h3>
+
+                <div class="formula-row">
+                    <span class="formula-name">Coefficient d'équivalence</span>
+                    <span class="formula-equation">\(n = \dfrac{E_a}{E_{cm}}\)</span>
+                    <span class="formula-ref">EC4 §5.4.2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Coefficient long terme</span>
+                    <span class="formula-equation">\(n_L = n_0 \cdot (1 + \psi_L \cdot \varphi_t)\)</span>
+                    <span class="formula-ref">EC4 §5.4.2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Flèche instantanée</span>
+                    <span class="formula-equation">\(\delta = \dfrac{5 \cdot q \cdot L^4}{384 \cdot E_a \cdot
+                        I_{eq}}\)</span>
+                    <span class="formula-ref">RDM</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Fréquence propre</span>
+                    <span class="formula-equation">\(f_1 = \dfrac{\pi}{2L^2} \sqrt{\dfrac{E_a \cdot I_{eq}}{m}}\)</span>
+                    <span class="formula-ref">Dynamique</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Armatures anti-fissuration</span>
+                    <span class="formula-equation">\(A_{s,min} = 0.002 \cdot b \cdot h_c\)</span>
+                    <span class="formula-ref">EC4 §9.8.1</span>
+                </div>
+            </section>
+
+            <!-- RÉSISTANCE AU FEU -->
+            <section class="formulaire-section">
+                <h3>🔥 Résistance au Feu</h3>
+
+                <div class="formula-row">
+                    <span class="formula-name">Charge en feu</span>
+                    <span class="formula-equation">\(q_{fi} = g + \psi_1 \cdot q\)</span>
+                    <span class="formula-ref">EC1 Partie 1-2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Moment résistant feu</span>
+                    <span class="formula-equation">\(M_{fi,Rd} = A_s \cdot f_{yk} \cdot 0.9 \cdot d_s\)</span>
+                    <span class="formula-ref">EC4 Partie 1-2</span>
+                </div>
+
+                <div class="formula-row">
+                    <span class="formula-name">Armatures requises</span>
+                    <span class="formula-equation">\(A_s = \dfrac{M_{fi,Ed}}{0.9 \cdot d_s \cdot f_{yk}}\)</span>
+                    <span class="formula-ref">EC4 Partie 1-2</span>
+                </div>
+            </section>
+
+            <!-- DONNÉES MATÉRIAUX -->
+            <section class="formulaire-section">
+                <h3>📊 Données Matériaux</h3>
+
+                <h4>Béton</h4>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Classe</th>
+                                <th>\(f_{ck}\) (MPa)</th>
+                                <th>\(f_{cd}\) (MPa)</th>
+                                <th>\(E_{cm}\) (GPa)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C20/25</td>
+                                <td>20</td>
+                                <td>13.3</td>
+                                <td>30.0</td>
+                            </tr>
+                            <tr>
+                                <td>C25/30</td>
+                                <td>25</td>
+                                <td>16.7</td>
+                                <td>31.5</td>
+                            </tr>
+                            <tr>
+                                <td>C30/37</td>
+                                <td>30</td>
+                                <td>20.0</td>
+                                <td>33.0</td>
+                            </tr>
+                            <tr>
+                                <td>C35/45</td>
+                                <td>35</td>
+                                <td>23.3</td>
+                                <td>34.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Bacs Acier Courants</h4>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Bac</th>
+                                <th>\(h_p\) (mm)</th>
+                                <th>\(A_p\) (mm²/m)</th>
+                                <th>\(M_{pa,Rd}\) (kN.m/m)</th>
+                                <th>Poids (kg/m²)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cofraplus 60 (0.75)</td>
+                                <td>60</td>
+                                <td>1095</td>
+                                <td>6.7</td>
+                                <td>9.8</td>
+                            </tr>
+                            <tr>
+                                <td>Cofraplus 60 (0.88)</td>
+                                <td>60</td>
+                                <td>1284</td>
+                                <td>8.5</td>
+                                <td>11.5</td>
+                            </tr>
+                            <tr>
+                                <td>Cofraplus 60 (1.00)</td>
+                                <td>60</td>
+                                <td>1460</td>
+                                <td>10.2</td>
+                                <td>13.0</td>
+                            </tr>
+                            <tr>
+                                <td>Cofrastra 70 (0.88)</td>
+                                <td>73</td>
+                                <td>1350</td>
+                                <td>10.9</td>
+                                <td>11.9</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Exigences Résistance au Feu</h4>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Durée feu</th>
+                                <th>h<sub>c</sub> min</th>
+                                <th>Armatures</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>R30</td>
+                                <td>60 mm</td>
+                                <td>Treillis standard</td>
+                            </tr>
+                            <tr>
+                                <td>R60</td>
+                                <td>70 mm</td>
+                                <td>HA 8 ou 10/nervure</td>
+                            </tr>
+                            <tr>
+                                <td>R90</td>
+                                <td>80 mm</td>
+                                <td>HA 10 ou 12/nervure</td>
+                            </tr>
+                            <tr>
+                                <td>R120</td>
+                                <td>90 mm</td>
+                                <td>HA 12 ou 14/nervure</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <div style="text-align: center; margin-top: var(--space-xl);">
+                <button class="btn btn-secondary" onclick="window.print()">🖨️ Imprimer le formulaire</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

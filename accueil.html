@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cours de Construction Mixte - Accueil">
+    <title>Accueil | Construction Mixte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="accueil.html" class="nav-logo">
+                <span class="logo-icon">🏗️</span>
+                <span>Construction Mixte</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="accueil.html" class="active">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Poutres Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cours/poutres/chapitre1.html">1. Introduction</a></li>
+                        <li><a href="cours/poutres/chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="cours/poutres/chapitre3.html">3. Comportement</a></li>
+                        <li><a href="cours/poutres/chapitre4.html">4. ELU</a></li>
+                        <li><a href="cours/poutres/chapitre5.html">5. ELS</a></li>
+                        <li><a href="cours/poutres/chapitre6.html">6. Connexion</a></li>
+                        <li><a href="cours/poutres/calculateurs.html">Calculateurs</a></li>
+                        <li><a href="cours/poutres/formulaire.html">Formulaire</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Planchers Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cours/planchers/chapitre1.html">1. Introduction</a></li>
+                        <li><a href="cours/planchers/chapitre2.html">2. Composants</a></li>
+                        <li><a href="cours/planchers/chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="cours/planchers/chapitre4.html">4. ELU</a></li>
+                        <li><a href="cours/planchers/chapitre5.html">5. ELS</a></li>
+                        <li><a href="cours/planchers/chapitre6.html">6. Résistance Feu</a></li>
+                        <li><a href="cours/planchers/calculateurs.html">Calculateurs</a></li>
+                        <li><a href="cours/planchers/formulaire.html">Formulaire</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="logout(); return false;" class="logout-btn">Déconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="welcome-message" id="welcomeMessage"></div>
+            <h1>Construction Mixte Acier-Béton</h1>
+            <p>Cours complet selon l'Eurocode 4 (EN 1994-1-1)</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="courses-section">
+            <h2>Choisissez votre cours</h2>
+
+            <div class="courses-grid">
+                <!-- POUTRES MIXTES -->
+                <div class="course-card">
+                    <div class="course-icon">🔩</div>
+                    <h3>Poutres Mixtes</h3>
+                    <p>Dimensionnement des poutres mixtes acier-béton avec goujons connecteurs.</p>
+
+                    <div class="course-topics">
+                        <span class="topic">Comportement mixte</span>
+                        <span class="topic">Moment résistant</span>
+                        <span class="topic">Goujons</span>
+                        <span class="topic">Flèche</span>
+                    </div>
+
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-value">6</span>
+                            <span class="stat-label">Chapitres</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Calculateurs</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Exercices</span>
+                        </div>
+                    </div>
+
+                    <a href="cours/poutres/chapitre1.html" class="btn btn-primary">
+                        Commencer le cours →
+                    </a>
+                </div>
+
+                <!-- PLANCHERS MIXTES -->
+                <div class="course-card">
+                    <div class="course-icon">🏢</div>
+                    <h3>Planchers Mixtes</h3>
+                    <p>Dimensionnement des planchers mixtes avec bac acier collaborant.</p>
+
+                    <div class="course-topics">
+                        <span class="topic">Phase construction</span>
+                        <span class="topic">ELU & ELS</span>
+                        <span class="topic">Résistance feu</span>
+                        <span class="topic">Vibrations</span>
+                    </div>
+
+                    <div class="course-stats">
+                        <div class="stat">
+                            <span class="stat-value">6</span>
+                            <span class="stat-label">Chapitres</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Calculateurs</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Exercices</span>
+                        </div>
+                    </div>
+
+                    <a href="cours/planchers/chapitre1.html" class="btn btn-primary">
+                        Commencer le cours →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Fonctionnalités</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h4>Formules Interactives</h4>
+                    <p>Toutes les formules en MathJax avec notation Eurocode</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h4>Calculateurs</h4>
+                    <p>8 calculateurs interactifs pour les vérifications</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h4>Exercices Résolus</h4>
+                    <p>6 exercices détaillés avec solutions pas à pas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Formulaires</h4>
+                    <p>Fiches récapitulatives imprimables</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte selon Eurocode 4</p>
+        </div>
+    </footer>
+
+    <script src="auth/auth.js"></script>
+    <script src="js/protection.js"></script>
+    <script>
+        // Vérifier authentification
+        if (!requireAuth()) {
+            // Redirection gérée par requireAuth
+        } else {
+            // Afficher message de bienvenue
+            const session = getSession();
+            if (session) {
+                document.getElementById('welcomeMessage').textContent =
+                    `Bienvenue, ${session.prenom} ${session.nom}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

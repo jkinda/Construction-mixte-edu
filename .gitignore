@@ -1,0 +1,15 @@
+# Ignorer les fichiers temporaires et systèmes
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Ignorer les fichiers de développement
+update-files.ps1
+*.ps1
+
+# Ignorer les fichiers de l'éditeur
+.vscode/
+.idea/
+*.swp
+*.swo

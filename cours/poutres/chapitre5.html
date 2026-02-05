@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vérifications ELS des poutres mixtes - Contraintes, flèches et vibrations">
+    <title>ELS | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Poutres Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html" class="active">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 5</span>
+            </div>
+            <h1>Chapitre 5 : Vérifications ELS</h1>
+            <p>Contraintes, flèches et vibrations</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>5.1 Contraintes Normales</h2>
+
+                <p>À l'ELS, les calculs sont effectués en <strong>comportement élastique</strong>. Il faut vérifier que
+                    les contraintes ne dépassent pas les limites admissibles.</p>
+
+                <h3>5.1.1 Section Mixte Homogénéisée</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Caractéristiques de la section homogénéisée</h4>
+                    <p><strong>Aire équivalente :</strong></p>
+                    \[A_{eq} = A_a + \frac{b_{eff} \cdot h_c}{n}\]
+
+                    <p><strong>Position du centre de gravité</strong> (depuis la base du profilé) :</p>
+                    \[y_G = \frac{A_a \cdot y_a + \frac{b_{eff} \cdot h_c}{n} \cdot y_c}{A_{eq}}\]
+
+                    <p><strong>Moment d'inertie mixte :</strong></p>
+                    \[I_{eq} = I_a + A_a (y_G - y_a)^2 + \frac{b_{eff} \cdot h_c^3}{12n} + \frac{b_{eff} \cdot h_c}{n}
+                    (y_c - y_G)^2\]
+                </div>
+
+                <h3>5.1.2 Vérification des Contraintes</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Contraintes à vérifier (EC4 §7.2.1)</h4>
+                    <p><strong>Dans l'acier :</strong></p>
+                    \[\sigma_a = \frac{M_{Ed}}{I_{eq}} \cdot y \leq f_y\]
+
+                    <p><strong>Dans le béton :</strong></p>
+                    \[\sigma_c = \frac{M_{Ed}}{n \cdot I_{eq}} \cdot y \leq 0.6 \cdot f_{ck}\]
+                </div>
+
+                <h2>5.2 Calcul des Flèches</h2>
+
+                <h3>5.2.1 Flèche Instantanée</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Flèche d'une poutre uniformément chargée</h4>
+                    \[\delta_{inst} = \frac{5}{384} \cdot \frac{q \cdot L^4}{E_a \cdot I_{eq}}\]
+                </div>
+
+                <h3>5.2.2 Flèche à Long Terme (Fluage)</h3>
+
+                <p>Pour tenir compte du fluage, on utilise le coefficient d'équivalence à long terme \(n_L\) :</p>
+
+                <div class="info-box formula">
+                    <h4>📐 Prise en compte du fluage</h4>
+                    \[\delta_{totale} = \delta_{inst,G} \cdot (1 + \psi_L \cdot \varphi_t) + \delta_{inst,Q}\]
+                    <p>ou de manière équivalente, recalculer \(I_{eq}\) avec \(n_L\) pour les charges permanentes.</p>
+                </div>
+
+                <h3>5.2.3 Limites de Flèche</h3>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type de flèche</th>
+                                <th>Planchers courants</th>
+                                <th>Planchers fragiles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Flèche instantanée (Q)</td>
+                                <td>\(L/350\)</td>
+                                <td>\(L/400\)</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>Flèche totale</td>
+                                <td>\(L/250\)</td>
+                                <td>\(L/300\)</td>
+                            </tr>
+                            <tr>
+                                <td>Flèche active</td>
+                                <td>\(L/300\)</td>
+                                <td>\(L/350\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>5.3 Vibrations</h2>
+
+                <p>Pour les planchers de bureaux et locaux recevant du public, il convient de vérifier le confort
+                    vibratoire.</p>
+
+                <div class="info-box formula">
+                    <h4>📐 Fréquence propre fondamentale</h4>
+                    \[f_1 = \frac{\pi}{2L^2} \sqrt{\frac{E_a \cdot I_{eq}}{m}}\]
+                    <p>où \(m\) est la masse linéique de la poutre + dalle.</p>
+
+                    <p><strong>Critère :</strong> \(f_1 \geq 3\) Hz pour les planchers de bureaux</p>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Attention</h4>
+                    <p>Pour les planchers très légers ou de grande portée, la vérification des vibrations peut être
+                        dimensionnante. Un critère plus sévère (\(f_1 \geq 4\) Hz) peut être exigé pour les locaux
+                        sensibles.</p>
+                </div>
+
+                <div style="text-align: center; margin: var(--space-xl) 0;">
+                    <a href="calculateurs.html#calc-fleche" class="btn btn-primary">
+                        📏 Utiliser le calculateur de flèche
+                    </a>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre4.html" class="nav-btn prev">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Chapitre 4 : ELU</span>
+                    </a>
+                    <a href="chapitre6.html" class="nav-btn next">
+                        <span>Chapitre 6 : Connexion</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

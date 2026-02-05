@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Formulaire de référence pour le dimensionnement des poutres mixtes selon l'Eurocode 4">
+    <title>Formulaire | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Poutres Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html" class="active">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><span>Formulaire</span>
+            </div>
+            <h1>Formulaire de Référence</h1>
+            <p>Toutes les formules essentielles pour le dimensionnement des poutres mixtes</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+
+            <!-- Coefficients de sécurité -->
+            <div class="formulaire-section">
+                <h3>📌 Coefficients de Sécurité</h3>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Coefficient</th>
+                                <th>Valeur</th>
+                                <th>Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>\(\gamma_{M0}\)</td>
+                                <td>1.00</td>
+                                <td>Résistance des sections acier</td>
+                            </tr>
+                            <tr>
+                                <td>\(\gamma_{M1}\)</td>
+                                <td>1.00</td>
+                                <td>Instabilité acier</td>
+                            </tr>
+                            <tr>
+                                <td>\(\gamma_C\)</td>
+                                <td>1.50</td>
+                                <td>Béton</td>
+                            </tr>
+                            <tr>
+                                <td>\(\gamma_V\)</td>
+                                <td>1.25</td>
+                                <td>Connecteurs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Propriétés des matériaux -->
+            <div class="formulaire-section">
+                <h3>📌 Valeurs de Calcul des Matériaux</h3>
+                <div class="formula-row">
+                    <div class="formula-name">Acier</div>
+                    <div class="formula-equation">\[f_{yd} = \frac{f_y}{\gamma_{M0}}\]</div>
+                    <div class="formula-ref">EC3 §6.1</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Béton compression</div>
+                    <div class="formula-equation">\[f_{cd} = \alpha_{cc} \cdot \frac{f_{ck}}{\gamma_C}\]</div>
+                    <div class="formula-ref">EC2 §3.1.6</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Module d'élasticité béton</div>
+                    <div class="formula-equation">\[E_{cm} = 22 \left(\frac{f_{cm}}{10}\right)^{0.3} \text{ GPa}\]</div>
+                    <div class="formula-ref">EC2 §3.1.3</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Coefficient d'équivalence</div>
+                    <div class="formula-equation">\[n_0 = \frac{E_a}{E_{cm}} \quad ; \quad n_L = n_0(1 + \psi_L
+                        \varphi_t)\]</div>
+                    <div class="formula-ref">EC4 §5.4.2.2</div>
+                </div>
+            </div>
+
+            <!-- Largeur participante -->
+            <div class="formulaire-section">
+                <h3>📌 Largeur Participante</h3>
+                <div class="formula-row">
+                    <div class="formula-name">Largeur effective</div>
+                    <div class="formula-equation">\[b_{eff} = b_0 + \sum b_{ei} \quad \text{avec} \quad b_{ei} =
+                        \min\left(\frac{L_e}{8}, b_i\right)\]</div>
+                    <div class="formula-ref">EC4 §5.4.1.2</div>
+                </div>
+            </div>
+
+            <!-- ELU Flexion -->
+            <div class="formulaire-section">
+                <h3>📌 Moment Résistant Plastique (ELU)</h3>
+                <div class="formula-row">
+                    <div class="formula-name">Force plastique acier</div>
+                    <div class="formula-equation">\[N_{a,pl} = A_a \cdot f_{yd}\]</div>
+                    <div class="formula-ref">EC4 §6.2</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Force compression béton</div>
+                    <div class="formula-equation">\[N_{c,f} = 0.85 \cdot f_{cd} \cdot b_{eff} \cdot h_c\]</div>
+                    <div class="formula-ref">EC4 §6.2</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Position ANP (dans dalle)</div>
+                    <div class="formula-equation">\[z_{pl} = \frac{N_{a,pl}}{0.85 \cdot f_{cd} \cdot b_{eff}}\]</div>
+                    <div class="formula-ref">EC4 §6.2</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Moment résistant</div>
+                    <div class="formula-equation">\[\boxed{M_{pl,Rd} = A_a \cdot f_{yd} \cdot d}\]</div>
+                    <div class="formula-ref">EC4 §6.2</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Bras de levier</div>
+                    <div class="formula-equation">\[d = \frac{h_a}{2} + h_c + h_p - \frac{z_{pl}}{2}\]</div>
+                    <div class="formula-ref">EC4 §6.2</div>
+                </div>
+            </div>
+
+            <!-- Effort tranchant -->
+            <div class="formulaire-section">
+                <h3>📌 Effort Tranchant</h3>
+                <div class="formula-row">
+                    <div class="formula-name">Résistance plastique</div>
+                    <div class="formula-equation">\[V_{pl,Rd} = \frac{A_v \cdot f_{yd}}{\sqrt{3}}\]</div>
+                    <div class="formula-ref">EC3 §6.2.6</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Interaction M-V</div>
+                    <div class="formula-equation">\[M_{V,Rd} = M_{pl,Rd} - (M_{pl,Rd} -
+                        M_{f,Rd})\left(\frac{2V_{Ed}}{V_{pl,Rd}} - 1\right)^2\]</div>
+                    <div class="formula-ref">EC4 §6.2.2.4</div>
+                </div>
+            </div>
+
+            <!-- Connexion -->
+            <div class="formulaire-section">
+                <h3>📌 Résistance des Goujons</h3>
+                <div class="formula-row">
+                    <div class="formula-name">Rupture acier</div>
+                    <div class="formula-equation">\[P_{Rd,1} = \frac{0.8 \cdot f_u \cdot \pi d^2/4}{\gamma_V}\]</div>
+                    <div class="formula-ref">EC4 §6.6.3.1</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Écrasement béton</div>
+                    <div class="formula-equation">\[P_{Rd,2} = \frac{0.29 \cdot \alpha \cdot d^2 \cdot \sqrt{f_{ck}
+                        \cdot E_{cm}}}{\gamma_V}\]</div>
+                    <div class="formula-ref">EC4 §6.6.3.1</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Résistance goujon</div>
+                    <div class="formula-equation">\[\boxed{P_{Rd} = \min(P_{Rd,1}, P_{Rd,2})}\]</div>
+                    <div class="formula-ref">EC4 §6.6.3.1</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Nombre de goujons</div>
+                    <div class="formula-equation">\[n = \frac{V_\ell}{P_{Rd}} \quad \text{avec} \quad V_\ell =
+                        \min(N_{c,f}, N_{a,pl})\]</div>
+                    <div class="formula-ref">EC4 §6.6</div>
+                </div>
+            </div>
+
+            <!-- ELS -->
+            <div class="formulaire-section">
+                <h3>📌 Vérifications ELS</h3>
+                <div class="formula-row">
+                    <div class="formula-name">Inertie mixte</div>
+                    <div class="formula-equation">\[I_{eq} = I_a + A_a(y_G - y_a)^2 + \frac{b_{eff} h_c^3}{12n} +
+                        \frac{b_{eff} h_c}{n}(y_c - y_G)^2\]</div>
+                    <div class="formula-ref">EC4 §5.4</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Flèche</div>
+                    <div class="formula-equation">\[\delta = \frac{5 \cdot q \cdot L^4}{384 \cdot E_a \cdot I_{eq}}\]
+                    </div>
+                    <div class="formula-ref">RDM</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Limites flèche</div>
+                    <div class="formula-equation">\[\delta_{inst} \leq \frac{L}{350} \quad ; \quad \delta_{tot} \leq
+                        \frac{L}{250}\]</div>
+                    <div class="formula-ref">EC4 §7.3</div>
+                </div>
+                <div class="formula-row">
+                    <div class="formula-name">Fréquence propre</div>
+                    <div class="formula-equation">\[f_1 = \frac{\pi}{2L^2}\sqrt{\frac{E_a I_{eq}}{m}} \geq 3 \text{
+                        Hz}\]</div>
+                    <div class="formula-ref">EC4 §7.3</div>
+                </div>
+            </div>
+
+            <!-- Tableaux de données -->
+            <div class="formulaire-section">
+                <h3>📌 Données Matériaux Courantes</h3>
+                <h4>Aciers de construction</h4>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nuance</th>
+                                <th>\(f_y\) (MPa)</th>
+                                <th>\(f_u\) (MPa)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S235</td>
+                                <td>235</td>
+                                <td>360</td>
+                            </tr>
+                            <tr>
+                                <td>S275</td>
+                                <td>275</td>
+                                <td>430</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>S355</td>
+                                <td>355</td>
+                                <td>510</td>
+                            </tr>
+                            <tr>
+                                <td>S460</td>
+                                <td>460</td>
+                                <td>540</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Bétons</h4>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Classe</th>
+                                <th>\(f_{ck}\) (MPa)</th>
+                                <th>\(E_{cm}\) (GPa)</th>
+                                <th>\(f_{cd}\) (MPa)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C25/30</td>
+                                <td>25</td>
+                                <td>31.5</td>
+                                <td>16.7</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>C30/37</td>
+                                <td>30</td>
+                                <td>33.0</td>
+                                <td>20.0</td>
+                            </tr>
+                            <tr>
+                                <td>C35/45</td>
+                                <td>35</td>
+                                <td>34.0</td>
+                                <td>23.3</td>
+                            </tr>
+                            <tr>
+                                <td>C40/50</td>
+                                <td>40</td>
+                                <td>35.0</td>
+                                <td>26.7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

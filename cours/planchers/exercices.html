@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exercices résolus sur les planchers mixtes">
+    <title>Exercices | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html" class="active">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Exercices Résolus</h1>
+            <p>Applications pratiques de dimensionnement de planchers mixtes</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+
+            <!-- EXERCICE 1 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <span class="exercise-number">Exercice 1</span>
+                    <div class="difficulty">
+                        <span class="difficulty-star filled">★</span>
+                        <span class="difficulty-star filled">★</span>
+                        <span class="difficulty-star">★</span>
+                    </div>
+                </div>
+
+                <h3>Plancher de Bureau - Vérification Complète</h3>
+
+                <div class="exercise-data">
+                    <h5>📋 Données</h5>
+                    <ul>
+                        <li>Portée sans étaiement : <strong>L = 3.2 m</strong></li>
+                        <li>Bac acier : <strong>Cofraplus 60 (0.88 mm)</strong></li>
+                        <li>Béton : <strong>C25/30</strong></li>
+                        <li>Épaisseur totale : <strong>h<sub>t</sub> = 140 mm</strong> (h<sub>c</sub> = 80 mm)</li>
+                        <li>Charges supplémentaires : <strong>G' = 1.5 kN/m²</strong>, <strong>Q = 2.5 kN/m²</strong>
+                        </li>
+                        <li>Exigence feu : <strong>R60</strong></li>
+                    </ul>
+                </div>
+
+                <p><strong>Question :</strong> Vérifier le plancher en phase construction, puis en phase mixte (ELU), et
+                    dimensionner les armatures feu.</p>
+
+                <button class="solution-toggle" onclick="toggleSolution(1)">Voir la solution</button>
+
+                <div class="solution-content" id="solution-1">
+                    <div class="solution-step">
+                        <h5>Étape 1 : Caractéristiques du bac</h5>
+                        <p>Cofraplus 60 (0.88 mm) :</p>
+                        <ul>
+                            <li>\(A_p = 1284\) mm²/m</li>
+                            <li>\(M_{pa,Rd} = 8.5\) kN.m/m</li>
+                            <li>\(e_p = 30\) mm</li>
+                            <li>Poids : 0.12 kN/m²</li>
+                        </ul>
+                    </div>
+
+                    <div class="solution-step">
+                        <h5>Étape 2 : Phase Construction</h5>
+                        <p><strong>Charges :</strong></p>
+                        \[g_{bac} = 0.12 \text{ kN/m²}\]
+                        \[g_{béton} = 25 \times 0.140 = 3.50 \text{ kN/m²}\]
+                        \[q_{chantier} = 1.5 \text{ kN/m²}\]
+
+                        <p><strong>Combinaison ELU :</strong></p>
+                        \[p_{Ed} = 1.35 \times (0.12 + 3.50) + 1.5 \times 1.5 = 7.14 \text{ kN/m²}\]
+
+                        <p><strong>Moment sollicitant :</strong></p>
+                        \[M_{Ed} = \frac{7.14 \times 3.2^2}{8} = 9.14 \text{ kN.m/m}\]
+
+                        <p><strong>Vérification :</strong></p>
+                        \[\frac{M_{Ed}}{M_{pa,Rd}} = \frac{9.14}{8.5} = 1.08 > 1.0 \quad \times\]
+
+                        <p class="result-fail"><strong>⚠️ Étaiement provisoire nécessaire</strong> (ou augmenter
+                            épaisseur du bac)</p>
+                    </div>
+
+                    <div class="solution-step">
+                        <h5>Étape 3 : Phase Mixte ELU</h5>
+                        <p>Avec étaiement, on vérifie la phase mixte.</p>
+
+                        <p><strong>Charges totales :</strong></p>
+                        \[g_{tot} = 0.12 + 3.50 + 1.5 = 5.12 \text{ kN/m²}\]
+
+                        <p><strong>Combinaison ELU :</strong></p>
+                        \[p_{Ed} = 1.35 \times 5.12 + 1.5 \times 2.5 = 10.66 \text{ kN/m²}\]
+
+                        <p><strong>Moment sollicitant :</strong></p>
+                        \[M_{Ed} = \frac{10.66 \times 3.2^2}{8} = 13.6 \text{ kN.m/m}\]
+
+                        <p><strong>Moment résistant plastique :</strong></p>
+                        \[N_{pa} = 1284 \times 320 \times 10^{-3} = 410.9 \text{ kN/m}\]
+                        \[x_{pl} = \frac{410.9 \times 10^3}{0.85 \times 16.7 \times 1000} = 28.9 \text{ mm}\]
+                        \[z = 140 - 28.9/2 - 30 = 95.6 \text{ mm}\]
+                        \[M_{pl,Rd} = 410.9 \times 0.0956 = 39.3 \text{ kN.m/m}\]
+
+                        <p><strong>Vérification :</strong></p>
+                        \[\frac{M_{Ed}}{M_{pl,Rd}} = \frac{13.6}{39.3} = 0.35 < 1.0 \quad \checkmark\] </div>
+
+                            <div class="solution-step">
+                                <h5>Étape 4 : Résistance au Feu R60</h5>
+                                <p><strong>Vérification géométrique :</strong> h<sub>c</sub> = 80 mm ≥ 70 mm (exigence
+                                    R60) ✓</p>
+
+                                <p><strong>Charge en situation de feu :</strong></p>
+                                \[q_{fi} = 5.12 + 0.5 \times 2.5 = 6.37 \text{ kN/m²}\]
+
+                                <p><strong>Moment :</strong></p>
+                                \[M_{fi,Ed} = \frac{6.37 \times 3.2^2}{8} = 8.15 \text{ kN.m/m}\]
+
+                                <p><strong>Armatures requises</strong> (d<sub>s</sub> ≈ 120 mm) :</p>
+                                \[A_s = \frac{8.15 \times 10^6}{0.9 \times 120 \times 500} = 151 \text{ mm²/m}\]
+
+                                <p><strong>Choix :</strong> 1 HA 8 par nervure (5 nervures/m) → A<sub>s</sub> = 251
+                                    mm²/m ✓</p>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- EXERCICE 2 -->
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <span class="exercise-number">Exercice 2</span>
+                        <div class="difficulty">
+                            <span class="difficulty-star filled">★</span>
+                            <span class="difficulty-star filled">★</span>
+                            <span class="difficulty-star filled">★</span>
+                        </div>
+                    </div>
+
+                    <h3>Vérification Flèche et Vibrations</h3>
+
+                    <div class="exercise-data">
+                        <h5>📋 Données</h5>
+                        <ul>
+                            <li>Portée : <strong>L = 4.0 m</strong></li>
+                            <li>Bac acier : <strong>Cofrastra 70 (0.88 mm)</strong></li>
+                            <li>Béton : <strong>C30/37</strong></li>
+                            <li>Épaisseur totale : <strong>h<sub>t</sub> = 160 mm</strong></li>
+                            <li>Charge permanente totale : <strong>g = 5.0 kN/m²</strong></li>
+                            <li>Charge variable : <strong>q = 3.0 kN/m²</strong></li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Question :</strong> Vérifier la flèche ELS et la fréquence propre pour un usage bureaux.
+                    </p>
+
+                    <button class="solution-toggle" onclick="toggleSolution(2)">Voir la solution</button>
+
+                    <div class="solution-content" id="solution-2">
+                        <div class="solution-step">
+                            <h5>Étape 1 : Coefficient d'équivalence</h5>
+                            \[n_0 = \frac{E_a}{E_{cm}} = \frac{210\,000}{33\,000} = 6.36\]
+                        </div>
+
+                        <div class="solution-step">
+                            <h5>Étape 2 : Inertie de la section mixte</h5>
+                            <p>Cofrastra 70 (0.88 mm) : I<sub>p</sub> = 7.2 × 10⁵ mm⁴/m, h<sub>p</sub> = 73 mm</p>
+                            <p>h<sub>c</sub> = 160 - 73 = 87 mm</p>
+
+                            <p><strong>Inertie béton :</strong></p>
+                            \[I_c = \frac{1000 \times 87^3}{12} = 54.9 \times 10^6 \text{ mm}^4\text{/m}\]
+
+                            <p><strong>Inertie équivalente (approximation) :</strong></p>
+                            \[I_{eq} \approx I_p + \frac{I_c}{n_0} + A_p \cdot z^2\]
+                            \[I_{eq} \approx 7.2 \times 10^5 + \frac{54.9 \times 10^6}{6.36} + 1350 \times 80^2\]
+                            \[I_{eq} \approx 18.0 \times 10^6 \text{ mm}^4\text{/m}\]
+                        </div>
+
+                        <div class="solution-step">
+                            <h5>Étape 3 : Calcul de la flèche</h5>
+                            <p><strong>Charge ELS :</strong></p>
+                            \[q_{ELS} = g + q = 5.0 + 3.0 = 8.0 \text{ kN/m²}\]
+
+                            <p><strong>Flèche :</strong></p>
+                            \[\delta = \frac{5 \times 8.0 \times 4000^4}{384 \times 210\,000 \times 18.0 \times 10^6}\]
+                            \[\delta = 7.0 \text{ mm}\]
+
+                            <p><strong>Limite :</strong></p>
+                            \[\delta_{lim} = \frac{L}{250} = \frac{4000}{250} = 16.0 \text{ mm}\]
+
+                            <p>\(\delta = 7.0 < 16.0\) mm ✓</p>
+                        </div>
+
+                        <div class="solution-step">
+                            <h5>Étape 4 : Fréquence propre</h5>
+                            <p><strong>Masse linéique :</strong></p>
+                            \[m = \frac{g}{9.81} \times 100 = \frac{5.0}{9.81} \times 100 = 51 \text{ kg/m}\]
+
+                            <p><strong>Fréquence :</strong></p>
+                            \[f_1 = \frac{\pi}{2 \times 4^2} \sqrt{\frac{210\,000 \times 18.0 \times 10^6}{51 \times
+                            10^6}}\]
+                            \[f_1 \approx 7.6 \text{ Hz}\]
+
+                            <p>\(f_1 = 7.6 > 3\) Hz (bureaux) ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXERCICE 3 -->
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <span class="exercise-number">Exercice 3</span>
+                        <div class="difficulty">
+                            <span class="difficulty-star filled">★</span>
+                            <span class="difficulty-star">★</span>
+                            <span class="difficulty-star">★</span>
+                        </div>
+                    </div>
+
+                    <h3>Choix d'un Plancher pour Parking</h3>
+
+                    <div class="exercise-data">
+                        <h5>📋 Données</h5>
+                        <ul>
+                            <li>Portée : <strong>L = 2.5 m</strong> (entre poutres)</li>
+                            <li>Usage : <strong>Parking couvert</strong></li>
+                            <li>Charge variable : <strong>Q = 2.5 kN/m²</strong></li>
+                            <li>Exigence feu : <strong>R90</strong></li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Question :</strong> Proposer un plancher adapté (bac + épaisseur) et vérifier la phase
+                        construction sans étaiement.</p>
+
+                    <button class="solution-toggle" onclick="toggleSolution(3)">Voir la solution</button>
+
+                    <div class="solution-content" id="solution-3">
+                        <div class="solution-step">
+                            <h5>Étape 1 : Exigences R90</h5>
+                            <p>Pour R90, il faut h<sub>c</sub> ≥ 80 mm.</p>
+                            <p>Choix initial : <strong>h<sub>c</sub> = 80 mm</strong></p>
+                        </div>
+
+                        <div class="solution-step">
+                            <h5>Étape 2 : Choix du bac</h5>
+                            <p>Pour portée L = 2.5 m sans étaiement, un <strong>Cofraplus 60 (0.75 mm)</strong> devrait
+                                convenir.</p>
+                            <ul>
+                                <li>h<sub>p</sub> = 60 mm</li>
+                                <li>h<sub>t</sub> = 60 + 80 = 140 mm</li>
+                                <li>M<sub>pa,Rd</sub> = 6.7 kN.m/m</li>
+                                <li>Poids = 0.10 kN/m²</li>
+                            </ul>
+                        </div>
+
+                        <div class="solution-step">
+                            <h5>Étape 3 : Vérification phase construction</h5>
+                            <p><strong>Charges :</strong></p>
+                            \[g_{béton} = 25 \times 0.140 = 3.50 \text{ kN/m²}\]
+                            \[p_{Ed} = 1.35 \times (0.10 + 3.50) + 1.5 \times 1.5 = 7.11 \text{ kN/m²}\]
+
+                            <p><strong>Moment :</strong></p>
+                            \[M_{Ed} = \frac{7.11 \times 2.5^2}{8} = 5.55 \text{ kN.m/m}\]
+
+                            <p><strong>Vérification :</strong></p>
+                            \[\frac{M_{Ed}}{M_{pa,Rd}} = \frac{5.55}{6.7} = 0.83 < 1.0 \quad \checkmark\] <p
+                                class="result-ok"><strong>✓ Pas d'étaiement nécessaire</strong></p>
+                        </div>
+
+                        <div class="solution-step">
+                            <h5>Conclusion</h5>
+                            <p><strong>Solution retenue :</strong></p>
+                            <ul>
+                                <li>Bac : Cofraplus 60 (0.75 mm)</li>
+                                <li>Épaisseur totale : 140 mm</li>
+                                <li>Béton : C25/30</li>
+                                <li>Armatures feu : 1 HA 10/nervure pour R90</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleSolution(num) {
+            const solution = document.getElementById('solution-' + num);
+            solution.classList.toggle('active');
+            const btn = solution.previousElementSibling;
+            btn.textContent = solution.classList.contains('active') ? 'Masquer la solution' : 'Voir la solution';
+        }
+    </script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculateurs interactifs pour planchers mixtes">
+    <title>Calculateurs | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html" class="active">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Calculateurs Interactifs</h1>
+            <p>Outils de dimensionnement pour planchers mixtes selon l'Eurocode 4</p>
+        </div>
+    </header>
+
+    <main class="calculator-section">
+        <div class="container">
+
+            <!-- CALCULATEUR 1: PHASE CONSTRUCTION -->
+            <div class="calc-card" id="calc-construction">
+                <h3>🏗️ 1. Vérification Phase Construction</h3>
+                <p>Vérification de la tôle seule sous béton frais et charges de chantier.</p>
+
+                <div class="calc-grid">
+                    <div class="form-group">
+                        <label for="bac-type">Type de bac acier</label>
+                        <select id="bac-type">
+                            <option value="">-- Sélectionner --</option>
+                            <option value="cofraplus60_075">Cofraplus 60 (0.75mm)</option>
+                            <option value="cofraplus60_088">Cofraplus 60 (0.88mm)</option>
+                            <option value="cofraplus60_100">Cofraplus 60 (1.00mm)</option>
+                            <option value="cofrastra70_088">Cofrastra 70 (0.88mm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="portee-tole">Portée (mm)</label>
+                        <input type="number" id="portee-tole" placeholder="Ex: 2800" value="2800">
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-construction">Épaisseur béton h<sub>c</sub> (mm)</label>
+                        <input type="number" id="hc-construction" placeholder="Ex: 80" value="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="q-chantier">Charge chantier (kN/m²)</label>
+                        <input type="number" id="q-chantier" placeholder="Ex: 1.5" value="1.5" step="0.1">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculerPhaseConstruction()">Calculer</button>
+
+                <div class="calc-results" id="results-construction" style="display: none;">
+                    <h4>Résultats</h4>
+                    <div class="result-item"><span>Charge permanente totale</span><span id="result-g-total"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Charge ELU</span><span id="result-p-elu"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Moment sollicitant M<sub>Ed</sub></span><span id="result-m-ed-const"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Moment résistant M<sub>pa,Rd</sub></span><span id="result-m-rd-const"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Taux de travail</span><span id="result-taux-const"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Flèche calculée δ</span><span id="result-delta-const"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Flèche limite</span><span id="result-delta-lim-const"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Vérification</span><span id="verif-construction"
+                            class="verification-badge">-</span></div>
+                </div>
+            </div>
+
+            <!-- CALCULATEUR 2: MOMENT RÉSISTANT MIXTE -->
+            <div class="calc-card" id="calc-moment">
+                <h3>⚡ 2. Moment Résistant Plastique (Phase Mixte)</h3>
+                <p>Calcul du moment résistant plastique de la section mixte.</p>
+
+                <div class="calc-grid">
+                    <div class="form-group">
+                        <label for="bac-type-mixte">Type de bac acier</label>
+                        <select id="bac-type-mixte">
+                            <option value="">-- Sélectionner --</option>
+                            <option value="cofraplus60_075">Cofraplus 60 (0.75mm)</option>
+                            <option value="cofraplus60_088">Cofraplus 60 (0.88mm)</option>
+                            <option value="cofraplus60_100">Cofraplus 60 (1.00mm)</option>
+                            <option value="cofrastra70_088">Cofrastra 70 (0.88mm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beton-classe">Classe de béton</label>
+                        <select id="beton-classe">
+                            <option value="C20">C20/25</option>
+                            <option value="C25" selected>C25/30</option>
+                            <option value="C30">C30/37</option>
+                            <option value="C35">C35/45</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-mixte">Épaisseur béton h<sub>c</sub> (mm)</label>
+                        <input type="number" id="hc-mixte" placeholder="Ex: 80" value="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="m-ed-mixte">Moment sollicitant M<sub>Ed</sub> (kN.m/m)
+                            <small>(optionnel)</small></label>
+                        <input type="number" id="m-ed-mixte" placeholder="Ex: 15" step="0.1">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculerMomentMixte()">Calculer</button>
+
+                <div class="calc-results" id="results-moment" style="display: none;">
+                    <h4>Résultats</h4>
+                    <div class="result-item"><span>Force traction bac N<sub>pa</sub></span><span id="result-npa"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Force compression max N<sub>cf</sub></span><span id="result-ncf"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Position ANP</span><span id="result-anp"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Bras de levier z</span><span id="result-z"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Moment résistant M<sub>pl,Rd</sub></span><span id="result-mpl-rd"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Taux de travail</span><span id="result-taux-mixte"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Vérification</span><span id="verif-moment"
+                            class="verification-badge">-</span></div>
+                </div>
+            </div>
+
+            <!-- CALCULATEUR 3: CISAILLEMENT -->
+            <div class="calc-card" id="calc-cisaillement">
+                <h3>🔧 3. Résistance au Cisaillement</h3>
+                <p>Vérification de la résistance au cisaillement vertical.</p>
+
+                <div class="calc-grid">
+                    <div class="form-group">
+                        <label for="bac-type-cis">Type de bac acier</label>
+                        <select id="bac-type-cis">
+                            <option value="">-- Sélectionner --</option>
+                            <option value="cofraplus60_075">Cofraplus 60 (0.75mm)</option>
+                            <option value="cofraplus60_088">Cofraplus 60 (0.88mm)</option>
+                            <option value="cofraplus60_100">Cofraplus 60 (1.00mm)</option>
+                            <option value="cofrastra70_088">Cofrastra 70 (0.88mm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beton-classe-cis">Classe de béton</label>
+                        <select id="beton-classe-cis">
+                            <option value="C20">C20/25</option>
+                            <option value="C25" selected>C25/30</option>
+                            <option value="C30">C30/37</option>
+                            <option value="C35">C35/45</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-cis">Épaisseur béton h<sub>c</sub> (mm)</label>
+                        <input type="number" id="hc-cis" placeholder="Ex: 80" value="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="v-ed">Effort tranchant V<sub>Ed</sub> (kN/m) <small>(optionnel)</small></label>
+                        <input type="number" id="v-ed" placeholder="Ex: 20" step="0.1">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculerCisaillement()">Calculer</button>
+
+                <div class="calc-results" id="results-cisaillement" style="display: none;">
+                    <h4>Résultats</h4>
+                    <div class="result-item"><span>Hauteur utile d<sub>p</sub></span><span id="result-dp"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Résistance V<sub>Rd</sub></span><span id="result-v-rd"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Taux de travail</span><span id="result-taux-cis"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Vérification</span><span id="verif-cisaillement"
+                            class="verification-badge">-</span></div>
+                </div>
+            </div>
+
+            <!-- CALCULATEUR 4: FLÈCHE -->
+            <div class="calc-card" id="calc-fleche">
+                <h3>📏 4. Vérification Flèche (ELS)</h3>
+                <p>Calcul de la flèche et vérification des vibrations.</p>
+
+                <div class="calc-grid">
+                    <div class="form-group">
+                        <label for="bac-type-fleche">Type de bac acier</label>
+                        <select id="bac-type-fleche">
+                            <option value="">-- Sélectionner --</option>
+                            <option value="cofraplus60_075">Cofraplus 60 (0.75mm)</option>
+                            <option value="cofraplus60_088">Cofraplus 60 (0.88mm)</option>
+                            <option value="cofraplus60_100">Cofraplus 60 (1.00mm)</option>
+                            <option value="cofrastra70_088">Cofrastra 70 (0.88mm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beton-classe-fleche">Classe de béton</label>
+                        <select id="beton-classe-fleche">
+                            <option value="C20">C20/25</option>
+                            <option value="C25" selected>C25/30</option>
+                            <option value="C30">C30/37</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-fleche">Épaisseur béton h<sub>c</sub> (mm)</label>
+                        <input type="number" id="hc-fleche" placeholder="Ex: 80" value="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="portee-fleche">Portée (mm)</label>
+                        <input type="number" id="portee-fleche" placeholder="Ex: 3000" value="3000">
+                    </div>
+                    <div class="form-group">
+                        <label for="g-extra">Charge permanente ajoutée (kN/m²)</label>
+                        <input type="number" id="g-extra" placeholder="Ex: 1.5" value="1.5" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="q-fleche">Charge variable (kN/m²)</label>
+                        <input type="number" id="q-fleche" placeholder="Ex: 2.5" value="2.5" step="0.1">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculerFleche()">Calculer</button>
+
+                <div class="calc-results" id="results-fleche" style="display: none;">
+                    <h4>Résultats</h4>
+                    <div class="result-item"><span>Coefficient n<sub>0</sub></span><span id="result-n0"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Inertie équivalente I<sub>eq</sub></span><span id="result-ieq"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Flèche calculée δ</span><span id="result-delta"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Flèche limite L/250</span><span id="result-delta-lim"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Fréquence propre f<sub>1</sub></span><span id="result-freq"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Vérification</span><span id="verif-fleche"
+                            class="verification-badge">-</span></div>
+                </div>
+            </div>
+
+            <!-- CALCULATEUR 5: RÉSISTANCE AU FEU -->
+            <div class="calc-card" id="calc-feu">
+                <h3>🔥 5. Dimensionnement au Feu</h3>
+                <p>Calcul des armatures complémentaires pour la résistance au feu.</p>
+
+                <div class="calc-grid">
+                    <div class="form-group">
+                        <label for="duree-feu">Durée de résistance au feu</label>
+                        <select id="duree-feu">
+                            <option value="R30">R30 (30 min)</option>
+                            <option value="R60" selected>R60 (60 min)</option>
+                            <option value="R90">R90 (90 min)</option>
+                            <option value="R120">R120 (120 min)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hc-feu">Épaisseur béton h<sub>c</sub> (mm)</label>
+                        <input type="number" id="hc-feu" placeholder="Ex: 80" value="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="portee-feu">Portée (mm)</label>
+                        <input type="number" id="portee-feu" placeholder="Ex: 3000" value="3000">
+                    </div>
+                    <div class="form-group">
+                        <label for="g-feu">Charge permanente totale (kN/m²)</label>
+                        <input type="number" id="g-feu" placeholder="Ex: 4.5" value="4.5" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="q-feu">Charge variable (kN/m²)</label>
+                        <input type="number" id="q-feu" placeholder="Ex: 2.5" value="2.5" step="0.1">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="calculerFeu()">Calculer</button>
+
+                <div class="calc-results" id="results-feu" style="display: none;">
+                    <h4>Résultats</h4>
+                    <div class="result-item"><span>Charge en situation de feu q<sub>fi</sub></span><span
+                            id="result-q-fi" class="result-value">-</span></div>
+                    <div class="result-item"><span>Moment M<sub>fi,Ed</sub></span><span id="result-m-fi"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Section d'armatures requise A<sub>s</sub></span><span
+                            id="result-as-req" class="result-value">-</span></div>
+                    <div class="result-item"><span>Épaisseur h<sub>c</sub> min requise</span><span id="result-hc-min"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Armatures proposées</span><span id="result-armatures"
+                            class="result-value">-</span></div>
+                    <div class="result-item"><span>Vérification</span><span id="verif-feu"
+                            class="verification-badge">-</span></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/calculateurs.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dimensionnement ELU des planchers mixtes - Moment résistant et cisaillement">
+    <title>ELU | Planchers Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏢</span><span>Planchers Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Composants</a></li>
+                        <li><a href="chapitre3.html">3. Phase Construction</a></li>
+                        <li><a href="chapitre4.html" class="active">4. ELU</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 4</span>
+            </div>
+            <h1>Chapitre 4 : Dimensionnement à l'ELU</h1>
+            <p>Moment résistant plastique et résistance au cisaillement</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>4.1 Comportement Mixte</h2>
+
+                <p>Après durcissement du béton, le plancher fonctionne en <strong>section mixte</strong> :</p>
+                <ul>
+                    <li>Le béton comprimé résiste à la compression</li>
+                    <li>Le bac acier résiste à la traction</li>
+                    <li>La connexion est assurée par les embossages et l'adhérence</li>
+                </ul>
+
+                <h2>4.2 Moment Résistant Plastique</h2>
+
+                <h3>4.2.1 Forces Plastiques</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Force de traction dans le bac</h4>
+                    \[N_{pa} = A_p \cdot f_{yp}\]
+
+                    <h4>📐 Force de compression max dans le béton</h4>
+                    \[N_{cf} = 0.85 \cdot f_{cd} \cdot b \cdot h_c\]
+                </div>
+
+                <h3>4.2.2 Cas 1 : ANP dans le Béton</h3>
+
+                <p>Si \(N_{cf} \geq N_{pa}\), l'axe neutre plastique se situe dans la dalle de béton.</p>
+
+                <div class="info-box formula">
+                    <h4>📐 Moment résistant - ANP dans le béton</h4>
+                    <p><strong>Position de l'ANP :</strong></p>
+                    \[x_{pl} = \frac{A_p \cdot f_{yp}}{0.85 \cdot f_{cd} \cdot b}\]
+
+                    <p><strong>Bras de levier :</strong></p>
+                    \[z = h_t - \frac{x_{pl}}{2} - e_p\]
+
+                    <p><strong>Moment résistant :</strong></p>
+                    \[\boxed{M_{pl,Rd} = A_p \cdot f_{yp} \cdot z}\]
+                </div>
+
+                <h2>4.3 Méthode m-k (EC4 §9.7.3)</h2>
+
+                <p>Pour les planchers avec connexion partielle mécanique, la résistance est déterminée par
+                    <strong>essais</strong> et caractérisée par les paramètres \(m\) et \(k\).</p>
+
+                <div class="info-box formula">
+                    <h4>📐 Résistance au cisaillement longitudinal</h4>
+                    \[\frac{V_\ell}{b \cdot d_p} = m \cdot \frac{A_p}{b \cdot L_s} + k\]
+                    <p>où :</p>
+                    <ul>
+                        <li>\(L_s\) = portée de cisaillement = \(L/4\) (charges réparties)</li>
+                        <li>\(m\), \(k\) = paramètres expérimentaux du bac</li>
+                    </ul>
+                </div>
+
+                <h2>4.4 Effort Tranchant Vertical</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Résistance au cisaillement (EC4 §9.7.5)</h4>
+                    \[V_{Rd} = b_0 \cdot d_p \cdot k_v \cdot \sqrt{f_{ck}}\]
+                    <p>avec :</p>
+                    <ul>
+                        <li>\(b_0\) = largeur moyenne des nervures</li>
+                        <li>\(k_v = 0.0525 / \gamma_V = 0.042\)</li>
+                    </ul>
+                </div>
+
+                <h2>4.5 Poinçonnement</h2>
+
+                <p>Pour les charges concentrées importantes :</p>
+
+                <div class="info-box formula">
+                    <h4>📐 Résistance au poinçonnement</h4>
+                    \[V_{Rd} = v_{Rd,c} \cdot u \cdot d\]
+                    <p>avec \(u\) = périmètre critique à \(2d\) de la charge.</p>
+                </div>
+
+                <div class="info-box example">
+                    <h4>💡 Exemple : Calcul du moment résistant</h4>
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Bac Cofraplus 60 (0.88 mm) : \(A_p = 1284\) mm²/m, \(e_p = 30\) mm</li>
+                        <li>Béton C25/30 : \(f_{cd} = 16.7\) MPa</li>
+                        <li>Épaisseur totale : \(h_t = 140\) mm, \(h_c = 80\) mm</li>
+                        <li>Limite élastique bac : \(f_{yp} = 320\) MPa</li>
+                    </ul>
+
+                    <p><strong>Force de traction :</strong></p>
+                    \[N_{pa} = 1284 \times 320 \times 10^{-3} = 410.9 \text{ kN/m}\]
+
+                    <p><strong>Force de compression max :</strong></p>
+                    \[N_{cf} = 0.85 \times 16.7 \times 1000 \times 80 \times 10^{-3} = 1136 \text{ kN/m}\]
+
+                    <p>\(N_{cf} > N_{pa}\) → <strong>ANP dans le béton</strong></p>
+
+                    <p><strong>Position ANP :</strong></p>
+                    \[x_{pl} = \frac{410.9 \times 10^3}{0.85 \times 16.7 \times 1000} = 28.9 \text{ mm}\]
+
+                    <p><strong>Bras de levier :</strong></p>
+                    \[z = 140 - \frac{28.9}{2} - 30 = 95.6 \text{ mm}\]
+
+                    <p><strong>Moment résistant :</strong></p>
+                    \[\boxed{M_{pl,Rd} = 410.9 \times 0.0956 = 39.3 \text{ kN.m/m}}\]
+                </div>
+
+                <div style="text-align: center; margin: var(--space-xl) 0;">
+                    <a href="calculateurs.html#calc-moment" class="btn btn-primary">
+                        🧮 Utiliser le calculateur de moment
+                    </a>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre3.html" class="nav-btn prev">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Chapitre 3 : Phase Construction</span>
+                    </a>
+                    <a href="chapitre5.html" class="nav-btn next">
+                        <span>Chapitre 5 : ELS</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Connexion acier-béton - Résistance des goujons et dispositions constructives">
+    <title>Connexion | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Poutres Mixtes</span></a>
+            <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html" class="active">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a><span class="separator">/</span><a href="#">Cours</a><span
+                    class="separator">/</span><span>Chapitre 6</span>
+            </div>
+            <h1>Chapitre 6 : Connexion Acier-Béton</h1>
+            <p>Résistance des goujons et dispositions constructives</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>6.1 Rôle et Types de Connecteurs</h2>
+
+                <p>La connexion assure le <strong>transfert des efforts de cisaillement longitudinal</strong> entre le
+                    profilé acier et la dalle béton.</p>
+
+                <h3>6.1.1 Goujons à Tête (Nelson)</h3>
+
+                <p>Les goujons soudés sont les connecteurs les plus utilisés. Dimensions courantes :</p>
+                <ul>
+                    <li>Diamètre : \(d = 16\) à 25 mm (couramment 19 ou 22 mm)</li>
+                    <li>Hauteur : \(h_{sc} \geq 3d\) (minimum 76 mm après soudage)</li>
+                    <li>Acier : \(f_u = 450\) à 500 MPa</li>
+                </ul>
+
+                <h2>6.2 Résistance d'un Goujon</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Résistance de calcul d'un goujon (EC4 §6.6.3.1)</h4>
+                    <p>La résistance est la plus petite des deux valeurs :</p>
+
+                    <p><strong>Rupture de l'acier du goujon :</strong></p>
+                    \[P_{Rd,1} = \frac{0.8 \cdot f_u \cdot \pi d^2 / 4}{\gamma_V}\]
+
+                    <p><strong>Écrasement du béton :</strong></p>
+                    \[P_{Rd,2} = \frac{0.29 \cdot \alpha \cdot d^2 \cdot \sqrt{f_{ck} \cdot E_{cm}}}{\gamma_V}\]
+
+                    <p>avec :</p>
+                    <ul>
+                        <li>\(\gamma_V = 1.25\)</li>
+                        <li>\(\alpha = 0.2(h_{sc}/d + 1)\) si \(3 \leq h_{sc}/d \leq 4\)</li>
+                        <li>\(\alpha = 1\) si \(h_{sc}/d > 4\)</li>
+                    </ul>
+
+                    \[\boxed{P_{Rd} = \min(P_{Rd,1}, P_{Rd,2})}\]
+                </div>
+
+                <h3>6.2.1 Réduction pour Bac Acier</h3>
+
+                <div class="info-box formula">
+                    <h4>📐 Coefficient de réduction \(k_t\) (EC4 §6.6.4)</h4>
+                    <p><strong>Nervures perpendiculaires :</strong></p>
+                    \[k_t = \frac{0.7}{\sqrt{n_r}} \cdot \frac{b_0}{h_p} \cdot \left(\frac{h_{sc}}{h_p} - 1\right) \leq
+                    k_{t,max}\]
+
+                    <p><strong>Nervures parallèles :</strong></p>
+                    \[k_\ell = 0.6 \cdot \frac{b_0}{h_p} \cdot \left(\frac{h_{sc}}{h_p} - 1\right) \leq 1.0\]
+                </div>
+
+                <h2>6.3 Connexion Complète</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Effort à transférer et nombre de goujons</h4>
+                    <p>Entre un appui et la section de moment maximal :</p>
+                    \[V_\ell = \min(N_{c,f}, N_{a,pl})\]
+
+                    <p>Nombre de goujons requis :</p>
+                    \[n = \frac{V_\ell}{P_{Rd}}\]
+                </div>
+
+                <h2>6.4 Connexion Partielle</h2>
+
+                <div class="info-box formula">
+                    <h4>📐 Degré de connexion minimal (EC4 §6.6.1.2)</h4>
+                    <p>Pour profilés à semelles égales avec \(L_e \leq 25\) m :</p>
+                    \[\eta \geq 1 - \left(\frac{355}{f_y}\right) \cdot (0.75 - 0.03 \cdot L_e) \geq 0.4\]
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Moment réduit en connexion partielle</h4>
+                    <p>En connexion partielle, le moment résistant est réduit. Interpolation linéaire :</p>
+                    \[M_{Rd} = M_{a,pl,Rd} + \eta \cdot (M_{pl,Rd} - M_{a,pl,Rd})\]
+                </div>
+
+                <h2>6.5 Dispositions Constructives</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Paramètre</th>
+                                <th>Exigence EC4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Entraxe longitudinal min</td>
+                                <td>\(5d\)</td>
+                            </tr>
+                            <tr>
+                                <td>Entraxe longitudinal max</td>
+                                <td>\(\min(800\) mm\(, 6h_c)\)</td>
+                            </tr>
+                            <tr>
+                                <td>Entraxe transversal min</td>
+                                <td>\(2.5d\)</td>
+                            </tr>
+                            <tr>
+                                <td>Distance au bord de semelle</td>
+                                <td>\(\geq 20\) mm</td>
+                            </tr>
+                            <tr>
+                                <td>Enrobage supérieur goujon</td>
+                                <td>\(\geq 20\) mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box example">
+                    <h4>💡 Exemple : Calcul du nombre de goujons</h4>
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Goujons ∅19 mm, \(h_{sc} = 100\) mm, \(f_u = 450\) MPa</li>
+                        <li>Béton C30/37 : \(f_{ck} = 30\) MPa, \(E_{cm} = 33000\) MPa</li>
+                        <li>Effort à transférer : \(V_\ell = 2500\) kN</li>
+                    </ul>
+
+                    <p><strong>Calcul :</strong></p>
+                    <p>\(\alpha = 1\) car \(h_{sc}/d = 100/19 = 5.3 > 4\)</p>
+                    \[P_{Rd,1} = \frac{0.8 \times 450 \times \pi \times 19^2/4}{1.25 \times 1000} = 81.7 \text{ kN}\]
+                    \[P_{Rd,2} = \frac{0.29 \times 1 \times 19^2 \times \sqrt{30 \times 33000}}{1.25 \times 1000} = 83.1
+                    \text{ kN}\]
+                    \[P_{Rd} = 81.7 \text{ kN}\]
+
+                    <p><strong>Nombre de goujons par demi-travée :</strong></p>
+                    \[n = \frac{2500}{81.7} = 30.6 \rightarrow \boxed{31 \text{ goujons}}\]
+                    <p>Soit 62 goujons sur toute la poutre.</p>
+                </div>
+
+                <div style="text-align: center; margin: var(--space-xl) 0;">
+                    <a href="calculateurs.html#calc-goujons" class="btn btn-primary">
+                        🔩 Utiliser le calculateur de goujons
+                    </a>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre5.html" class="nav-btn prev">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Chapitre 5 : ELS</span>
+                    </a>
+                    <a href="exercices.html" class="nav-btn next">
+                        <span>Exercices Résolus</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

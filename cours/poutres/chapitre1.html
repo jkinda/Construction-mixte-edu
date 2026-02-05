@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Introduction à la construction mixte acier-béton - Définitions, avantages et cadre normatif">
+    <title>Introduction | Poutres Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo">
+                <span class="logo-icon">🏗️</span>
+                <span>Poutres Mixtes</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html" class="active">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Accueil</a>
+                <span class="separator">/</span>
+                <a href="#">Cours</a>
+                <span class="separator">/</span>
+                <span>Chapitre 1</span>
+            </div>
+            <h1>Chapitre 1 : Introduction à la Construction Mixte</h1>
+            <p>Définitions, principes fondamentaux et avantages</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>1.1 Définition et Principes Fondamentaux</h2>
+
+                <div class="info-box definition">
+                    <h4>📖 Définition : Poutre Mixte</h4>
+                    <p>Une <strong>poutre mixte</strong> est un élément structural composé d'un <strong>profilé en
+                            acier</strong> et d'une <strong>dalle en béton armé</strong>, reliés entre eux par des
+                        <strong>connecteurs</strong> (généralement des goujons à tête) assurant la transmission des
+                        efforts de cisaillement longitudinal à l'interface.</p>
+                </div>
+
+                <p>La construction mixte acier-béton exploite les propriétés complémentaires des deux matériaux :</p>
+
+                <ul>
+                    <li><strong>Acier</strong> : excellente résistance en traction, ductilité, légèreté relative,
+                        rapidité de mise en œuvre</li>
+                    <li><strong>Béton</strong> : bonne résistance en compression, rigidité, protection contre le feu et
+                        la corrosion, économie</li>
+                </ul>
+
+                <!-- Section Diagram -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 300" width="100%" style="max-width: 500px;">
+                        <!-- Dalle béton -->
+                        <rect x="50" y="50" width="400" height="60" fill="#b0b0b0" stroke="#666" stroke-width="2" />
+                        <pattern id="hatch" patternUnits="userSpaceOnUse" width="10" height="10">
+                            <path d="M0,10 L10,0" stroke="#888" stroke-width="1" />
+                        </pattern>
+                        <rect x="50" y="50" width="400" height="60" fill="url(#hatch)" />
+                        <text x="250" y="85" text-anchor="middle" font-size="14" fill="#333">Dalle béton</text>
+
+                        <!-- Goujons -->
+                        <rect x="150" y="105" width="10" height="20" fill="#333" />
+                        <rect x="145" y="102" width="20" height="8" fill="#444" />
+                        <rect x="250" y="105" width="10" height="20" fill="#333" />
+                        <rect x="245" y="102" width="20" height="8" fill="#444" />
+                        <rect x="350" y="105" width="10" height="20" fill="#333" />
+                        <rect x="345" y="102" width="20" height="8" fill="#444" />
+
+                        <!-- Profilé IPE -->
+                        <rect x="150" y="125" width="200" height="15" fill="#4a90a4" stroke="#2d5a8a"
+                            stroke-width="2" />
+                        <rect x="245" y="140" width="10" height="80" fill="#4a90a4" stroke="#2d5a8a" stroke-width="2" />
+                        <rect x="150" y="220" width="200" height="15" fill="#4a90a4" stroke="#2d5a8a"
+                            stroke-width="2" />
+                        <text x="250" y="185" text-anchor="middle" font-size="14" fill="#fff">Profilé acier</text>
+
+                        <!-- Cotations -->
+                        <line x1="470" y1="50" x2="470" y2="110" stroke="#e67e22" stroke-width="2" />
+                        <line x1="465" y1="50" x2="475" y2="50" stroke="#e67e22" stroke-width="2" />
+                        <line x1="465" y1="110" x2="475" y2="110" stroke="#e67e22" stroke-width="2" />
+                        <text x="480" y="85" font-size="12" fill="#e67e22">h<tspan baseline-shift="sub" font-size="9">c
+                            </tspan></text>
+
+                        <line x1="470" y1="125" x2="470" y2="235" stroke="#e67e22" stroke-width="2" />
+                        <line x1="465" y1="125" x2="475" y2="125" stroke="#e67e22" stroke-width="2" />
+                        <line x1="465" y1="235" x2="475" y2="235" stroke="#e67e22" stroke-width="2" />
+                        <text x="480" y="180" font-size="12" fill="#e67e22">h<tspan baseline-shift="sub" font-size="9">a
+                            </tspan></text>
+
+                        <line x1="50" y1="260" x2="450" y2="260" stroke="#e67e22" stroke-width="2" />
+                        <line x1="50" y1="255" x2="50" y2="265" stroke="#e67e22" stroke-width="2" />
+                        <line x1="450" y1="255" x2="450" y2="265" stroke="#e67e22" stroke-width="2" />
+                        <text x="250" y="280" text-anchor="middle" font-size="12" fill="#e67e22">b<tspan
+                                baseline-shift="sub" font-size="9">eff</tspan></text>
+                    </svg>
+                </div>
+                <p class="figure-caption" style="text-align: center; font-style: italic; color: var(--gray-600);">Figure
+                    1.1 : Section transversale d'une poutre mixte</p>
+
+                <h2>1.2 Avantages de la Construction Mixte</h2>
+
+                <ol>
+                    <li><strong>Économie de matériaux</strong> : réduction du poids d'acier de 20 à 50% par rapport à
+                        une solution acier seul</li>
+                    <li><strong>Rigidité accrue</strong> : augmentation de l'inertie de 2 à 4 fois, réduisant les
+                        flèches</li>
+                    <li><strong>Portées importantes</strong> : jusqu'à 20 m pour les bâtiments courants, 25-30 m pour
+                        les ponts</li>
+                    <li><strong>Rapidité d'exécution</strong> : montage à sec du profilé, coulage ultérieur de la dalle
+                    </li>
+                    <li><strong>Réduction des hauteurs</strong> : optimisation de l'espace vertical, hauteur structurale
+                        réduite</li>
+                    <li><strong>Résistance au feu</strong> : la dalle protège naturellement la semelle supérieure</li>
+                </ol>
+
+                <h2>1.3 Domaines d'Application</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Domaine</th>
+                                <th>Applications typiques</th>
+                                <th>Portées courantes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bâtiments</td>
+                                <td>Bureaux, commerces, industriels</td>
+                                <td>6 - 18 m</td>
+                            </tr>
+                            <tr>
+                                <td>Parkings</td>
+                                <td>Parkings à étages</td>
+                                <td>12 - 16 m</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>Ponts</td>
+                                <td>Ponts-routes, passerelles</td>
+                                <td>25 - 60 m</td>
+                            </tr>
+                            <tr>
+                                <td>IGH</td>
+                                <td>Immeubles de grande hauteur</td>
+                                <td>8 - 15 m</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>1.4 Cadre Normatif</h2>
+
+                <p>Le dimensionnement des structures mixtes acier-béton est régi par les <strong>Eurocodes</strong> :
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Norme</th>
+                                <th>Domaine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>EN 1990 (EC0)</td>
+                                <td>Bases de calcul des structures</td>
+                            </tr>
+                            <tr>
+                                <td>EN 1991 (EC1)</td>
+                                <td>Actions sur les structures</td>
+                            </tr>
+                            <tr>
+                                <td>EN 1992 (EC2)</td>
+                                <td>Calcul des structures en béton</td>
+                            </tr>
+                            <tr>
+                                <td>EN 1993 (EC3)</td>
+                                <td>Calcul des structures en acier</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>EN 1994 (EC4)</strong></td>
+                                <td><strong>Calcul des structures mixtes acier-béton</strong></td>
+                            </tr>
+                            <tr>
+                                <td>EN 1998 (EC8)</td>
+                                <td>Conception parasismique</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Annexes Nationales</h4>
+                    <p>Les Eurocodes doivent être utilisés avec les <strong>Annexes Nationales</strong> qui précisent
+                        les paramètres déterminés au niveau national (NDP). En France, c'est l'AFNOR qui publie ces
+                        annexes (NF EN 1994-1-1/NA).</p>
+                </div>
+
+                <h2>1.5 Types de Connexion</h2>
+
+                <p>La connexion entre l'acier et le béton peut être :</p>
+
+                <ul>
+                    <li><strong>Complète</strong> : le glissement à l'interface est négligeable. La section atteint sa
+                        résistance plastique maximale.</li>
+                    <li><strong>Partielle</strong> : un glissement contrôlé est admis, permettant une économie de
+                        connecteurs. Le moment résistant est réduit proportionnellement.</li>
+                </ul>
+
+                <div class="info-box formula">
+                    <h4>📐 Degré de connexion</h4>
+                    \[\eta = \frac{n \cdot P_{Rd}}{N_{c,f}}\]
+                    <p>où :</p>
+                    <ul>
+                        <li>\(n\) = nombre de connecteurs entre section de moment nul et moment max</li>
+                        <li>\(P_{Rd}\) = résistance de calcul d'un connecteur</li>
+                        <li>\(N_{c,f}\) = effort de compression dans la dalle en connexion complète</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div class="chapter-navigation">
+                    <a href="index.html" class="nav-btn prev disabled">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                        <span>Accueil</span>
+                    </a>
+                    <a href="chapitre2.html" class="nav-btn next">
+                        <span>Chapitre 2 : Matériaux</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                        </svg>
+                    </a>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

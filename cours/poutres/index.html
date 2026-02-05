@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cours interactif sur le dimensionnement des poutres mixtes acier-béton selon l'Eurocode 4">
+    <title>Dimensionnement des Poutres Mixtes | Cours Interactif</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo">
+                <span class="logo-icon">🏗️</span>
+                <span>Poutres Mixtes</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Cours <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Matériaux</a></li>
+                        <li><a href="chapitre3.html">3. Comportement</a></li>
+                        <li><a href="chapitre4.html">4. ELU Flexion</a></li>
+                        <li><a href="chapitre5.html">5. ELS</a></li>
+                        <li><a href="chapitre6.html">6. Connexion</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-background">
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Dimensionnement des</span>
+                <span class="title-highlight">Poutres Mixtes</span>
+            </h1>
+            <p class="hero-subtitle">Acier-Béton selon l'Eurocode 4</p>
+            <p class="hero-description">
+                Cours universitaire approfondi combinant théorie, formules détaillées et applications pratiques 
+                pour maîtriser le calcul des structures mixtes.
+            </p>
+            <div class="hero-buttons">
+                <a href="chapitre1.html" class="btn btn-primary">
+                    <span>Commencer le cours</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </a>
+                <a href="calculateurs.html" class="btn btn-secondary">
+                    <span>Calculateurs</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="beam-diagram">
+                <div class="concrete-slab">
+                    <span>Dalle Béton</span>
+                </div>
+                <div class="connectors">
+                    <div class="stud"></div>
+                    <div class="stud"></div>
+                    <div class="stud"></div>
+                </div>
+                <div class="steel-beam">
+                    <div class="flange top"></div>
+                    <div class="web"></div>
+                    <div class="flange bottom"></div>
+                    <span>Profilé Acier</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Contenu du Cours</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Théorie Complète</h3>
+                    <p>Tous les concepts fondamentaux des structures mixtes acier-béton avec démonstrations rigoureuses.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>Formules Eurocode 4</h3>
+                    <p>Formulaire détaillé avec toutes les équations de dimensionnement ELU et ELS.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔢</div>
+                    <h3>Calculateurs Interactifs</h3>
+                    <p>Outils de calcul en ligne pour vérifier vos dimensionnements en temps réel.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>Exercices Résolus</h3>
+                    <p>Applications pratiques avec solutions détaillées étape par étape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters Overview -->
+    <section class="chapters">
+        <div class="container">
+            <h2 class="section-title">Plan du Cours</h2>
+            <div class="chapters-timeline">
+                <div class="chapter-item">
+                    <div class="chapter-number">01</div>
+                    <div class="chapter-content">
+                        <h3><a href="chapitre1.html">Introduction à la Construction Mixte</a></h3>
+                        <p>Définitions, avantages, domaines d'application et cadre normatif (Eurocode 4)</p>
+                        <div class="chapter-tags">
+                            <span class="tag">Fondamentaux</span>
+                            <span class="tag">Normes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">02</div>
+                    <div class="chapter-content">
+                        <h3><a href="chapitre2.html">Propriétés des Matériaux</a></h3>
+                        <p>Aciers S235/S355/S460, bétons C20 à C50, coefficient d'équivalence</p>
+                        <div class="chapter-tags">
+                            <span class="tag">Acier</span>
+                            <span class="tag">Béton</span>
+                            <span class="tag">Tableaux</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">03</div>
+                    <div class="chapter-content">
+                        <h3><a href="chapitre3.html">Comportement des Poutres Mixtes</a></h3>
+                        <p>Largeur participante, classification des sections, position de l'axe neutre</p>
+                        <div class="chapter-tags">
+                            <span class="tag">Section mixte</span>
+                            <span class="tag">ANP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">04</div>
+                    <div class="chapter-content">
+                        <h3><a href="chapitre4.html">Dimensionnement ELU</a></h3>
+                        <p>Moment résistant plastique, effort tranchant, interaction M-V</p>
+                        <div class="chapter-tags">
+                            <span class="tag">M<sub>pl,Rd</sub></span>
+                            <span class="tag">V<sub>pl,Rd</sub></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">05</div>
+                    <div class="chapter-content">
+                        <h3><a href="chapitre5.html">Vérifications ELS</a></h3>
+                        <p>Contraintes, flèches, vibrations et confort d'usage</p>
+                        <div class="chapter-tags">
+                            <span class="tag">Flèches</span>
+                            <span class="tag">Fluage</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-number">06</div>
+                    <div class="chapter-content">
+                        <h3><a href="chapitre6.html">Connexion Acier-Béton</a></h3>
+                        <p>Résistance des goujons, degré de connexion, dispositions constructives</p>
+                        <div class="chapter-tags">
+                            <span class="tag">Goujons</span>
+                            <span class="tag">P<sub>Rd</sub></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Formulas -->
+    <section class="formulas-preview">
+        <div class="container">
+            <h2 class="section-title">Formules Essentielles</h2>
+            <div class="formulas-grid">
+                <div class="formula-card">
+                    <h4>Largeur Participante</h4>
+                    <div class="formula">
+                        \[b_{eff} = b_0 + \sum b_{ei}\]
+                        \[b_{ei} = \min\left(\frac{L_e}{8}, b_i\right)\]
+                    </div>
+                </div>
+                <div class="formula-card">
+                    <h4>Moment Résistant Plastique</h4>
+                    <div class="formula">
+                        \[M_{pl,Rd} = A_a \cdot f_{yd} \cdot d\]
+                    </div>
+                </div>
+                <div class="formula-card">
+                    <h4>Résistance des Goujons</h4>
+                    <div class="formula">
+                        \[P_{Rd} = \min\left(\frac{0.8 f_u \pi d^2/4}{\gamma_V}, \frac{0.29 \alpha d^2 \sqrt{f_{ck} E_{cm}}}{\gamma_V}\right)\]
+                    </div>
+                </div>
+            </div>
+            <div class="formulas-cta">
+                <a href="formulaire.html" class="btn btn-outline">Voir le formulaire complet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cours Interactif</h4>
+                    <p>Dimensionnement des poutres mixtes acier-béton selon l'Eurocode 4</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="chapitre1.html">Cours</a></li>
+                        <li><a href="calculateurs.html">Calculateurs</a></li>
+                        <li><a href="exercices.html">Exercices</a></li>
+                        <li><a href="formulaire.html">Formulaire</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Références</h4>
+                    <ul>
+                        <li>EN 1994-1-1 (Eurocode 4)</li>
+                        <li>EN 1993-1-1 (Eurocode 3)</li>
+                        <li>EN 1992-1-1 (Eurocode 2)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <!-- Protection et authentification -->
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+</html>
+
