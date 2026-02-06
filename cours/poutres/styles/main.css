@@ -12,13 +12,13 @@
     --accent: #e67e22;
     --accent-light: #f39c12;
     --accent-dark: #d35400;
-    
+
     /* Couleurs matériaux */
     --steel: #4a90a4;
     --steel-light: #6bb3c9;
     --concrete: #8b8b8b;
     --concrete-light: #b0b0b0;
-    
+
     /* Neutres */
     --white: #ffffff;
     --gray-50: #f8fafc;
@@ -31,17 +31,23 @@
     --gray-700: #334155;
     --gray-800: #1e293b;
     --gray-900: #0f172a;
-    
+
+    /* Aliases pour compatibilité */
+    --bg-light: #f8fafc;
+    --text: #1e293b;
+    --text-light: #475569;
+    --text-muted: #94a3b8;
+
     /* États */
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
     --info: #3b82f6;
-    
+
     /* Typographie */
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-    
+
     /* Espacements */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
@@ -50,20 +56,20 @@
     --space-xl: 2rem;
     --space-2xl: 3rem;
     --space-3xl: 4rem;
-    
+
     /* Bordures */
     --radius-sm: 0.375rem;
     --radius-md: 0.5rem;
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
     --radius-full: 9999px;
-    
+
     /* Ombres */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
@@ -71,7 +77,9 @@
 }
 
 /* ========== RESET & BASE ========== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -108,7 +116,8 @@ a:hover {
     color: var(--accent);
 }
 
-ul, ol {
+ul,
+ol {
     list-style: none;
 }
 
@@ -121,16 +130,32 @@ ul, ol {
 }
 
 /* ========== TYPOGRAPHY ========== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 600;
     line-height: 1.25;
     color: var(--gray-900);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
 
 .section-title {
     text-align: center;
@@ -461,7 +486,7 @@ h4 { font-size: 1.25rem; }
     color: var(--white);
     font-weight: 600;
     font-size: 0.875rem;
-    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.1);
+    box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
@@ -504,7 +529,7 @@ h4 { font-size: 1.25rem; }
     width: 180px;
     height: 15px;
     background: linear-gradient(180deg, var(--steel-light), var(--steel));
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .flange.top {
@@ -747,7 +772,7 @@ h4 { font-size: 1.25rem; }
     .nav-toggle {
         display: flex;
     }
-    
+
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -763,46 +788,46 @@ h4 { font-size: 1.25rem; }
         visibility: hidden;
         transition: all var(--transition-base);
     }
-    
+
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
     }
-    
+
     .dropdown-menu {
         position: static;
         transform: none;
         box-shadow: none;
         padding-left: var(--space-lg);
     }
-    
+
     .hero {
         flex-direction: column;
         text-align: center;
         padding-top: calc(70px + var(--space-xl));
     }
-    
+
     .hero-content {
         max-width: 100%;
     }
-    
+
     .title-highlight {
         font-size: 2.5rem;
     }
-    
+
     .hero-buttons {
         justify-content: center;
     }
-    
+
     .hero-visual {
         margin-top: var(--space-xl);
     }
-    
+
     .beam-diagram {
         width: 280px;
     }
-    
+
     .chapter-item {
         flex-direction: column;
         gap: var(--space-md);
