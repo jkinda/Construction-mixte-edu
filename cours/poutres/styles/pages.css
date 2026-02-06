@@ -148,6 +148,22 @@
     color: var(--warning);
 }
 
+/* Info-box content text colors */
+.info-box p,
+.info-box li {
+    color: var(--gray-700);
+}
+
+.info-box ul,
+.info-box ol {
+    margin-top: var(--space-sm);
+    padding-left: var(--space-xl);
+}
+
+.info-box ul li::before {
+    color: var(--accent);
+}
+
 /* ========== FORMULA DISPLAY ========== */
 .formula-display {
     background: var(--gray-50);
