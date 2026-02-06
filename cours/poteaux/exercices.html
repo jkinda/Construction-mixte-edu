@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices Résolus | Poteaux Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html" class="active">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Exercices Résolus</h1>
+            <p>Applications pratiques du dimensionnement des poteaux mixtes</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Exercice 1 -->
+        <section class="exercise-section">
+            <div class="exercise-header">
+                <span class="exercise-number">Exercice 1</span>
+                <h2>Vérification d'un Poteau Enrobé au Flambement</h2>
+            </div>
+
+            <div class="exercise-content">
+                <div class="exercise-statement">
+                    <h4>📋 Énoncé</h4>
+                    <p>Un poteau mixte d'un immeuble de bureaux doit reprendre un effort de compression de
+                        <strong>N<sub>Ed</sub> = 4 500 kN</strong>.</p>
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Profilé : HEB 280, acier S355</li>
+                        <li>Section béton : 400 × 400 mm, C30/37</li>
+                        <li>Armatures : 4 HA 16 (As = 8.04 cm²)</li>
+                        <li>Longueur : L = 3.5 m, articulé aux deux extrémités</li>
+                    </ul>
+                    <p><strong>Vérifier</strong> la résistance au flambement du poteau.</p>
+                </div>
+
+                <div class="solution-toggle">
+                    <button class="btn-solution" onclick="toggleSolution(1)">Afficher la solution</button>
+                </div>
+
+                <div class="exercise-solution" id="solution1" style="display: none;">
+                    <h4>✅ Solution</h4>
+
+                    <h5>Étape 1 : Caractéristiques des matériaux</h5>
+                    <div class="formula">
+                        \begin{align}
+                        f_{yd} &= 355/1.0 = 355 \text{ MPa} \\
+                        f_{cd} &= 30/1.5 = 20 \text{ MPa} \\
+                        f_{sd} &= 500/1.15 = 435 \text{ MPa}
+                        \end{align}
+                    </div>
+
+                    <h5>Étape 2 : Sections</h5>
+                    <p>HEB 280 : A<sub>a</sub> = 131 cm², I<sub>a</sub> = 19 270 cm⁴</p>
+                    <div class="formula">
+                        \[A_c = 40 \times 40 - 131 - 8.04 = 1461 \text{ cm}^2\]
+                    </div>
+
+                    <h5>Étape 3 : Résistance plastique</h5>
+                    <div class="formula">
+                        \begin{align}
+                        N_{pl,Rd} &= 131 \times 355 + 0.85 \times 1461 \times 20 + 8.04 \times 435 \\
+                        &= 4650 + 2484 + 350 = \boxed{7484 \text{ kN}}
+                        \end{align}
+                    </div>
+
+                    <h5>Étape 4 : Coefficient de contribution</h5>
+                    <div class="formula">
+                        \[\delta = \frac{4650}{7484} = 0.62 \quad \checkmark \quad (0.2 < 0.62 < 0.9)\] </div>
+
+                            <h5>Étape 5 : Rigidité effective</h5>
+                            <div class="formula">
+                                \begin{align}
+                                I_c &= \frac{40^4}{12} - 19270 \approx 194\,000 \text{ cm}^4 \\
+                                (EI)_{eff} &= 210000 \times 19270 + 0.6 \times 33000 \times 194000 \\
+                                &= 4.05 \times 10^9 + 3.84 \times 10^9 = 7.89 \times 10^9 \text{ N.mm}^2
+                                \end{align}
+                            </div>
+
+                            <h5>Étape 6 : Charge critique et élancement</h5>
+                            <div class="formula">
+                                \begin{align}
+                                N_{cr} &= \frac{\pi^2 \times 7.89 \times 10^{12}}{3500^2} = 6\,357 \text{ kN} \\
+                                \bar{\lambda} &= \sqrt{\frac{8200}{6357}} = 1.14
+                                \end{align}
+                            </div>
+
+                            <h5>Étape 7 : Coefficient de flambement (courbe b, α = 0.34)</h5>
+                            <div class="formula">
+                                \begin{align}
+                                \Phi &= 0.5[1 + 0.34(1.14 - 0.2) + 1.14^2] = 1.31 \\
+                                \chi &= \frac{1}{1.31 + \sqrt{1.31^2 - 1.14^2}} = 0.50
+                                \end{align}
+                            </div>
+
+                            <h5>Étape 8 : Vérification</h5>
+                            <div class="formula">
+                                \[N_{b,Rd} = 0.50 \times 7484 = 3742 \text{ kN}\]
+                            </div>
+
+                            <div class="result-box fail">
+                                \[\frac{N_{Ed}}{N_{b,Rd}} = \frac{4500}{3742} = 1.20 > 1.0 \quad \text{NON VÉRIFIÉ}\]
+                            </div>
+
+                            <div class="conclusion">
+                                <p><strong>Conclusion :</strong> Le poteau ne convient pas. Solution : passer à HEB 320
+                                    ou HEM 280, ou augmenter la section de béton (450 × 450 mm).</p>
+                            </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Exercice 2 -->
+        <section class="exercise-section">
+            <div class="exercise-header">
+                <span class="exercise-number">Exercice 2</span>
+                <h2>Dimensionnement d'un Tube Circulaire Rempli</h2>
+            </div>
+
+            <div class="exercise-content">
+                <div class="exercise-statement">
+                    <h4>📋 Énoncé</h4>
+                    <p>Dimensionner un poteau tubulaire circulaire rempli de béton pour les conditions suivantes :</p>
+                    <ul>
+                        <li>Effort de compression : N<sub>Ed</sub> = 3 200 kN</li>
+                        <li>Longueur : L = 4.0 m (articulé-articulé)</li>
+                        <li>Résistance au feu requise : R60</li>
+                        <li>Acier S355, Béton C30/37</li>
+                    </ul>
+                </div>
+
+                <div class="solution-toggle">
+                    <button class="btn-solution" onclick="toggleSolution(2)">Afficher la solution</button>
+                </div>
+
+                <div class="exercise-solution" id="solution2" style="display: none;">
+                    <h4>✅ Solution</h4>
+
+                    <h5>Étape 1 : Dimension minimale pour R60</h5>
+                    <p>D'après le tableau EC4-1-2, pour R60 : <strong>d ≥ 200 mm</strong></p>
+                    <p>Choix initial : tube Ø 273 × 8 (S355)</p>
+
+                    <h5>Étape 2 : Caractéristiques du tube</h5>
+                    <div class="formula">
+                        \begin{align}
+                        A_a &= \pi \times (273^2 - 257^2)/4 = 66.6 \text{ cm}^2 \\
+                        I_a &= \pi(273^4 - 257^4)/64 = 5\,860 \text{ cm}^4 \\
+                        A_c &= \pi \times 257^2/4 = 519 \text{ cm}^2
+                        \end{align}
+                    </div>
+
+                    <h5>Étape 3 : Résistance plastique (coefficient 1.0 pour tubes)</h5>
+                    <div class="formula">
+                        \begin{align}
+                        N_{pl,Rd} &= 66.6 \times 355 + 1.0 \times 519 \times 20 \\
+                        &= 2364 + 1038 = \boxed{3402 \text{ kN}}
+                        \end{align}
+                    </div>
+
+                    <h5>Étape 4 : Coefficient de contribution</h5>
+                    <div class="formula">
+                        \[\delta = \frac{2364}{3402} = 0.69 \quad \checkmark\]
+                    </div>
+
+                    <h5>Étape 5 : Vérification au flambement</h5>
+                    <div class="formula">
+                        \begin{align}
+                        I_c &= \pi \times 257^4/64 = 21\,400 \text{ cm}^4 \\
+                        (EI)_{eff} &= 210000 \times 5860 + 0.6 \times 33000 \times 21400 \\
+                        &= 1.23 \times 10^9 + 0.42 \times 10^9 = 1.65 \times 10^9 \text{ N.mm}^2
+                        \end{align}
+                    </div>
+
+                    <div class="formula">
+                        \begin{align}
+                        N_{cr} &= \frac{\pi^2 \times 1.65 \times 10^{12}}{4000^2} = 1018 \text{ kN} \\
+                        \bar{\lambda} &= \sqrt{3700/1018} = 1.91
+                        \end{align}
+                    </div>
+
+                    <p>Avec courbe a (α = 0.21) : χ ≈ 0.26</p>
+                    <div class="formula">
+                        \[N_{b,Rd} = 0.26 \times 3402 = 884 \text{ kN} < 3200 \text{ kN}\] </div>
+
+                            <div class="result-box fail">
+                                Tube Ø 273 insuffisant pour le flambement.
+                            </div>
+
+                            <h5>Étape 6 : Nouvelle proposition</h5>
+                            <p>Choix : tube <strong>Ø 406 × 12</strong></p>
+                            <div class="formula">
+                                \begin{align}
+                                N_{pl,Rd} &\approx 7500 \text{ kN} \\
+                                N_{cr} &\approx 8000 \text{ kN} \\
+                                \chi &\approx 0.58 \\
+                                N_{b,Rd} &= 0.58 \times 7500 = 4350 \text{ kN} > 3200 \text{ kN}
+                                \end{align}
+                            </div>
+
+                            <div class="result-box ok">
+                                <strong>✓ VÉRIFIÉ</strong> avec tube Ø 406 × 12
+                            </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Exercice 3 -->
+        <section class="exercise-section">
+            <div class="exercise-header">
+                <span class="exercise-number">Exercice 3</span>
+                <h2>Flexion Composée avec Second Ordre</h2>
+            </div>
+
+            <div class="exercise-content">
+                <div class="exercise-statement">
+                    <h4>📋 Énoncé</h4>
+                    <p>Un poteau HEB 300 enrobé (450 × 450 mm) est soumis à :</p>
+                    <ul>
+                        <li>Effort : N<sub>Ed</sub> = 3 000 kN</li>
+                        <li>Moment en tête : M<sub>Ed</sub> = 180 kN.m</li>
+                        <li>L = 5.0 m, encastré en pied, articulé en tête</li>
+                    </ul>
+                    <p>Vérifier le poteau en flexion composée.</p>
+                </div>
+
+                <div class="solution-toggle">
+                    <button class="btn-solution" onclick="toggleSolution(3)">Afficher la solution</button>
+                </div>
+
+                <div class="exercise-solution" id="solution3" style="display: none;">
+                    <h4>✅ Solution</h4>
+
+                    <h5>Données de la section</h5>
+                    <p>D'après les exemples précédents :</p>
+                    <ul>
+                        <li>N<sub>pl,Rd</sub> ≈ 9 000 kN</li>
+                        <li>M<sub>pl,Rd</sub> ≈ 900 kN.m</li>
+                        <li>(EI)<sub>eff</sub> ≈ 12 × 10⁹ N.mm²</li>
+                    </ul>
+
+                    <h5>Étape 1 : Longueur de flambement</h5>
+                    <div class="formula">
+                        \[L_{cr} = 0.7 \times 5.0 = 3.5 \text{ m}\]
+                    </div>
+
+                    <h5>Étape 2 : Charge critique</h5>
+                    <div class="formula">
+                        \[N_{cr,eff} = \frac{\pi^2 \times 12 \times 10^{12}}{3500^2} = 9\,670 \text{ kN}\]
+                    </div>
+
+                    <h5>Étape 3 : Coefficient d'amplification</h5>
+                    <div class="formula">
+                        \[k = \frac{1.0}{1 - 3000/9670} = \frac{1}{0.69} = 1.45\]
+                    </div>
+
+                    <h5>Étape 4 : Moment amplifié</h5>
+                    <div class="formula">
+                        \[M_{Ed,II} = 1.45 \times 180 = 261 \text{ kN.m}\]
+                    </div>
+
+                    <h5>Étape 5 : Moment résistant réduit</h5>
+                    <p>N<sub>pm,Rd</sub> ≈ 0.35 × 9000 = 3150 kN</p>
+                    <div class="formula">
+                        \begin{align}
+                        M_{pl,N,Rd} &= 900 \times \frac{1 - 3000/9000}{1 - 3150/18000} \\
+                        &= 900 \times \frac{0.67}{0.825} = 731 \text{ kN.m}
+                        \end{align}
+                    </div>
+
+                    <h5>Étape 6 : Vérification (α<sub>M</sub> = 0.8 pour S355)</h5>
+                    <div class="formula">
+                        \[\frac{M_{Ed,II}}{\alpha_M \cdot M_{pl,N,Rd}} = \frac{261}{0.8 \times 731} = \frac{261}{585} =
+                        0.45\]
+                    </div>
+
+                    <div class="result-box ok">
+                        \[0.45 < 1.0 \quad \text{✓ VÉRIFIÉ}\] </div>
+
+                            <div class="conclusion">
+                                <p><strong>Conclusion :</strong> Le poteau est vérifié en flexion composée avec un taux
+                                    d'utilisation de 45%.</p>
+                            </div>
+                    </div>
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSolution(num) {
+            const solution = document.getElementById('solution' + num);
+            const btn = solution.previousElementSibling.querySelector('.btn-solution');
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                btn.textContent = 'Masquer la solution';
+            } else {
+                solution.style.display = 'none';
+                btn.textContent = 'Afficher la solution';
+            }
+        }
+    </script>
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>if (!requireAuth()) { }</script>
+</body>
+
+</html>

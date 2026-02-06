@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 4 : Flambement | Poteaux Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html" class="active">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../accueil.html">Accueil</a><span class="separator">/</span>
+                <a href="index.html">Poteaux Mixtes</a><span class="separator">/</span>
+                <span>Chapitre 4</span>
+            </div>
+            <h1>Chapitre 4 : Vérification au Flambement</h1>
+            <p>Charge critique, élancement réduit et courbes de flambement EC3</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>4.1 Charge Critique d'Euler</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Charge critique de flambement</h4>
+                    <div class="formula-main">
+                        \[N_{cr} = \frac{\pi^2 \cdot (EI)_{eff}}{L_{cr}^2}\]
+                    </div>
+                    <p>où \(L_{cr}\) est la longueur de flambement.</p>
+                </div>
+
+                <h2>4.2 Longueur de Flambement</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Conditions d'appui</th>
+                                <th>Coefficient β</th>
+                                <th>\(L_{cr}\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Encastré-Encastré</td>
+                                <td>0.5</td>
+                                <td>\(0.5 L\)</td>
+                            </tr>
+                            <tr>
+                                <td>Encastré-Articulé</td>
+                                <td>0.7</td>
+                                <td>\(0.7 L\)</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>Articulé-Articulé</td>
+                                <td>1.0</td>
+                                <td>\(L\)</td>
+                            </tr>
+                            <tr>
+                                <td>Encastré-Libre</td>
+                                <td>2.0</td>
+                                <td>\(2 L\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>4.3 Élancement Réduit</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Élancement réduit (EC4 §6.7.3.3)</h4>
+                    <div class="formula-main">
+                        \[\bar{\lambda} = \sqrt{\frac{N_{pl,Rk}}{N_{cr}}}\]
+                    </div>
+                    <p>où \(N_{pl,Rk}\) est la résistance plastique caractéristique (avec γ = 1).</p>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Condition d'application</h4>
+                    <p>Pour utiliser la méthode simplifiée de l'EC4, l'élancement réduit doit vérifier : \[\bar{\lambda}
+                        \leq 2.0\]</p>
+                </div>
+
+                <h2>4.4 Courbes de Flambement</h2>
+
+                <p>Le coefficient de réduction χ est déterminé selon l'EC3 :</p>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Coefficient de réduction au flambement</h4>
+                    <div class="formula-main">
+                        \[\chi = \frac{1}{\Phi + \sqrt{\Phi^2 - \bar{\lambda}^2}}\]
+                    </div>
+                    <p>avec :</p>
+                    <div class="formula">
+                        \[\Phi = 0.5 \left[1 + \alpha(\bar{\lambda} - 0.2) + \bar{\lambda}^2\right]\]
+                    </div>
+                </div>
+
+                <h3>Choix de la Courbe</h3>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type de section</th>
+                                <th>Axe</th>
+                                <th>Courbe</th>
+                                <th>α</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Profilé enrobé (fort)</td>
+                                <td>y-y</td>
+                                <td>b</td>
+                                <td>0.34</td>
+                            </tr>
+                            <tr>
+                                <td>Profilé enrobé (faible)</td>
+                                <td>z-z</td>
+                                <td>c</td>
+                                <td>0.49</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>Tube circulaire rempli</td>
+                                <td>tous</td>
+                                <td>a</td>
+                                <td>0.21</td>
+                            </tr>
+                            <tr>
+                                <td>Tube rectangulaire rempli</td>
+                                <td>tous</td>
+                                <td>b</td>
+                                <td>0.34</td>
+                            </tr>
+                            <tr>
+                                <td>Partiellement enrobé</td>
+                                <td>y-y / z-z</td>
+                                <td>b / c</td>
+                                <td>0.34 / 0.49</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>4.5 Résistance au Flambement</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Résistance de calcul au flambement (EC4 §6.7.3.5)</h4>
+                    <div class="formula-main">
+                        \[N_{b,Rd} = \chi \cdot N_{pl,Rd}\]
+                    </div>
+                    <p><strong>Vérification :</strong> \(\dfrac{N_{Ed}}{N_{b,Rd}} \leq 1.0\)</p>
+                </div>
+
+                <h2>4.6 Exemple de Vérification</h2>
+
+                <div class="info-box example">
+                    <h4>💡 Poteau HEB 300 enrobé - Vérification flambement</h4>
+
+                    <p><strong>Données :</strong> (suite de l'exemple précédent)</p>
+                    <ul>
+                        <li>Longueur : L = 4.0 m, articulé aux deux extrémités</li>
+                        <li>\(N_{Ed} = 5\,500\) kN</li>
+                        <li>\(N_{pl,Rd} = 9\,005\) kN, \(N_{pl,Rk} \approx 10\,000\) kN</li>
+                    </ul>
+
+                    <p><strong>Rigidité effective :</strong></p>
+                    <div class="formula">
+                        \[(EI)_{eff} = 210000 \times 25170 + 0.6 \times 33000 \times 300000 \approx 11.2 \times 10^{12}
+                        \text{ N.mm}^2\]
+                    </div>
+
+                    <p><strong>Charge critique :</strong></p>
+                    <div class="formula">
+                        \[N_{cr} = \frac{\pi^2 \times 11.2 \times 10^{12}}{4000^2} = 6\,908 \text{ kN}\]
+                    </div>
+
+                    <p><strong>Élancement réduit :</strong></p>
+                    <div class="formula">
+                        \[\bar{\lambda} = \sqrt{\frac{10\,000}{6\,908}} = 1.20\]
+                    </div>
+
+                    <p><strong>Coefficient de réduction</strong> (courbe b, α = 0.34) :</p>
+                    <div class="formula">
+                        \begin{align}
+                        \Phi &= 0.5[1 + 0.34(1.20-0.2) + 1.20^2] = 1.39 \\
+                        \chi &= \frac{1}{1.39 + \sqrt{1.39^2 - 1.20^2}} = 0.47
+                        \end{align}
+                    </div>
+
+                    <p><strong>Résistance au flambement :</strong></p>
+                    <div class="formula">
+                        \[N_{b,Rd} = 0.47 \times 9\,005 = 4\,232 \text{ kN}\]
+                    </div>
+
+                    <div class="result-box fail">
+                        \[\frac{N_{Ed}}{N_{b,Rd}} = \frac{5\,500}{4\,232} = 1.30 > 1.0 \quad \text{NON VÉRIFIÉ}\]
+                    </div>
+
+                    <p><strong>Solution :</strong> Augmenter la section (HEB 340 ou HEM 300).</p>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre3.html" class="nav-btn prev">
+                        <span>← Chapitre 3 : Caractéristiques</span>
+                    </a>
+                    <a href="chapitre5.html" class="nav-btn next">
+                        <span>Chapitre 5 : Flexion Composée →</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+        </div>
+    </footer>
+
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>if (!requireAuth()) { }</script>
+</body>
+
+</html>

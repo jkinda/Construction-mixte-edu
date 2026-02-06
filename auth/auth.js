@@ -6,7 +6,12 @@
 // ===== LISTE DES EMAILS AUTORISÉS =====
 // Encodée en Base64 pour obscurcir (pas une vraie sécurité)
 // Format: email1,email2,email3...
-const AUTHORIZED_EMAILS_ENCODED = 'YWRtaW5AZXN1cC5mcixwcm9mQGVzdXAuZnIsdGVzdEBleGFtcGxlLmNvbSxldHVkaWFudEBlc3VwLmZy';
+const AUTHORIZED_EMAILS_ENCODED = 'YWRtaW5AZXN1cC5mcixwcm9mQGVzdXAuZnIsdGVzdEBleGFtcGxlLmNvbSxldHVkaWFudEBlc3VwLmZyLGp1c3RpbmtpbmRhNEBnbWFpbC5jb20=';
+
+// ===== UTILISATEURS AVEC MOT DE PASSE =====
+// Format: {nom, prenom, password} encodé en Base64
+// Utilisateur test: nom=test, prenom=test, password=test
+const PASSWORD_USERS_ENCODED = 'W3sibm9tIjoidGVzdCIsInByZW5vbSI6InRlc3QiLCJwYXNzd29yZCI6InRlc3QifV0=';
 
 // Durée de session en jours
 const SESSION_DURATION_DAYS = 7;
@@ -25,6 +30,37 @@ function getAuthorizedEmails() {
         console.error('Erreur décodage');
         return [];
     }
+}
+
+/**
+ * Récupérer les utilisateurs avec mot de passe
+ */
+function getPasswordUsers() {
+    try {
+        const decoded = atob(PASSWORD_USERS_ENCODED);
+        return JSON.parse(decoded);
+    } catch (e) {
+        console.error('Erreur décodage utilisateurs');
+        return [];
+    }
+}
+
+/**
+ * Valider connexion avec mot de passe
+ */
+function validatePasswordLogin(nom, prenom, password) {
+    const users = getPasswordUsers();
+    const normalizedNom = nom.trim().toLowerCase();
+    const normalizedPrenom = prenom.trim().toLowerCase();
+
+    for (const user of users) {
+        if (user.nom.toLowerCase() === normalizedNom &&
+            user.prenom.toLowerCase() === normalizedPrenom &&
+            user.password === password) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /**

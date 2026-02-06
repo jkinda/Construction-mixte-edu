@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 2 : Sections Mixtes | Poteaux Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html" class="active">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../accueil.html">Accueil</a><span class="separator">/</span>
+                <a href="index.html">Poteaux Mixtes</a><span class="separator">/</span>
+                <span>Chapitre 2</span>
+            </div>
+            <h1>Chapitre 2 : Types de Sections Mixtes</h1>
+            <p>Géométrie et caractéristiques des différentes sections</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>2.1 Sections Totalement Enrobées</h2>
+
+                <div class="section-diagram">
+                    <svg viewBox="0 0 200 200" width="180" height="180">
+                        <!-- Béton -->
+                        <rect x="20" y="20" width="160" height="160" fill="#b0b0b0" stroke="#666" stroke-width="2" />
+                        <!-- Profilé HEB -->
+                        <rect x="50" y="35" width="100" height="12" fill="#4a90a4" stroke="#2d5a8a" />
+                        <rect x="50" y="153" width="100" height="12" fill="#4a90a4" stroke="#2d5a8a" />
+                        <rect x="92" y="47" width="16" height="106" fill="#4a90a4" stroke="#2d5a8a" />
+                        <!-- Armatures -->
+                        <circle cx="40" cy="40" r="5" fill="#333" />
+                        <circle cx="160" cy="40" r="5" fill="#333" />
+                        <circle cx="40" cy="160" r="5" fill="#333" />
+                        <circle cx="160" cy="160" r="5" fill="#333" />
+                        <!-- Cotations -->
+                        <text x="100" y="190" text-anchor="middle" font-size="12">b</text>
+                        <text x="190" y="100" font-size="12">h</text>
+                    </svg>
+                </div>
+
+                <div class="info-box definition">
+                    <h4>📖 Section Totalement Enrobée</h4>
+                    <p>Le profilé acier (HEB, HEM, HD) est entièrement enveloppé de béton armé. L'enrobage minimal est
+                        généralement de 40 à 50 mm.</p>
+                </div>
+
+                <h3>Caractéristiques</h3>
+                <ul>
+                    <li><strong>Profilés courants :</strong> HEB 200 à HEM 400</li>
+                    <li><strong>Enrobage min :</strong> 40 mm (ou max(40mm, b/6))</li>
+                    <li><strong>Armatures :</strong> 4 barres HA min aux angles + cadres</li>
+                    <li><strong>Résistance feu :</strong> R60 à R120 sans protection</li>
+                </ul>
+
+                <h2>2.2 Sections Partiellement Enrobées</h2>
+
+                <div class="section-diagram">
+                    <svg viewBox="0 0 200 200" width="180" height="180">
+                        <!-- Profilé -->
+                        <rect x="40" y="20" width="120" height="18" fill="#4a90a4" stroke="#2d5a8a" stroke-width="2" />
+                        <rect x="40" y="162" width="120" height="18" fill="#4a90a4" stroke="#2d5a8a" stroke-width="2" />
+                        <rect x="90" y="38" width="20" height="124" fill="#4a90a4" stroke="#2d5a8a" stroke-width="2" />
+                        <!-- Béton entre semelles -->
+                        <rect x="40" y="38" width="50" height="124" fill="#b0b0b0" stroke="#888" />
+                        <rect x="110" y="38" width="50" height="124" fill="#b0b0b0" stroke="#888" />
+                        <!-- Armatures -->
+                        <circle cx="65" cy="100" r="4" fill="#333" />
+                        <circle cx="135" cy="100" r="4" fill="#333" />
+                    </svg>
+                </div>
+
+                <div class="info-box definition">
+                    <h4>📖 Section Partiellement Enrobée</h4>
+                    <p>Le béton remplit l'espace entre les semelles du profilé. Les semelles restent apparentes pour
+                        faciliter les assemblages.</p>
+                </div>
+
+                <h3>Avantages</h3>
+                <ul>
+                    <li>Construction simplifiée (pas de coffrage extérieur)</li>
+                    <li>Assemblages boulonnés sur semelles visibles</li>
+                    <li>Bonne résistance au feu intrinsèque</li>
+                </ul>
+
+                <h2>2.3 Tubes Remplis de Béton (CFT)</h2>
+
+                <div class="tubes-grid">
+                    <div class="tube-item">
+                        <svg viewBox="0 0 150 150" width="120" height="120">
+                            <circle cx="75" cy="75" r="60" fill="#4a90a4" stroke="#2d5a8a" stroke-width="3" />
+                            <circle cx="75" cy="75" r="52" fill="#b0b0b0" />
+                        </svg>
+                        <h4>Tube Circulaire (CHS)</h4>
+                        <p>Effet de confinement optimal</p>
+                    </div>
+                    <div class="tube-item">
+                        <svg viewBox="0 0 150 150" width="120" height="120">
+                            <rect x="15" y="25" width="120" height="100" fill="#4a90a4" stroke="#2d5a8a"
+                                stroke-width="3" />
+                            <rect x="23" y="33" width="104" height="84" fill="#b0b0b0" />
+                        </svg>
+                        <h4>Tube Rectangulaire (RHS)</h4>
+                        <p>Facilité d'assemblage</p>
+                    </div>
+                </div>
+
+                <div class="info-box example">
+                    <h4>💡 Effet de Confinement</h4>
+                    <p>Pour les tubes circulaires, le confinement du béton par le tube améliore sa résistance. Le
+                        coefficient 0.85 peut être remplacé par <strong>1.0</strong> dans le calcul de \(N_{pl,Rd}\).
+                    </p>
+                </div>
+
+                <h2>2.4 Tableau Comparatif</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Critère</th>
+                                <th>Enrobée</th>
+                                <th>Part. Enrobée</th>
+                                <th>Tube Rempli</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Résistance au feu</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐</td>
+                                <td>⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Facilité construction</td>
+                                <td>⭐</td>
+                                <td>⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Assemblages</td>
+                                <td>⭐</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Esthétique</td>
+                                <td>⭐⭐</td>
+                                <td>⭐</td>
+                                <td>⭐⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chapter-navigation">
+                    <a href="chapitre1.html" class="nav-btn prev">
+                        <span>← Chapitre 1 : Introduction</span>
+                    </a>
+                    <a href="chapitre3.html" class="nav-btn next">
+                        <span>Chapitre 3 : Caractéristiques →</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+        </div>
+    </footer>
+
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>if (!requireAuth()) { }</script>
+</body>
+
+</html>

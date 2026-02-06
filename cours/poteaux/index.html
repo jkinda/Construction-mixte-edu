@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cours interactif sur les poteaux mixtes acier-béton">
+    <title>Poteaux Mixtes | Construction Mixte</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <div class="hero-icon">🏛️</div>
+            <h1>Poteaux Mixtes Acier-Béton</h1>
+            <p>Dimensionnement selon l'Eurocode 4 (EN 1994-1-1)</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Introduction -->
+        <section class="intro-section">
+            <h2>Présentation du Cours</h2>
+            <p>Ce cours couvre le dimensionnement complet des <strong>poteaux mixtes</strong> : sections enrobées,
+                partiellement enrobées et tubes remplis de béton.</p>
+
+            <div class="types-grid">
+                <div class="type-card">
+                    <svg viewBox="0 0 100 100" width="80" height="80">
+                        <rect x="15" y="15" width="70" height="70" fill="#b0b0b0" stroke="#666" stroke-width="2" />
+                        <rect x="30" y="25" width="40" height="5" fill="#4a90a4" />
+                        <rect x="30" y="70" width="40" height="5" fill="#4a90a4" />
+                        <rect x="48" y="30" width="4" height="40" fill="#4a90a4" />
+                        <circle cx="25" cy="25" r="3" fill="#333" />
+                        <circle cx="75" cy="25" r="3" fill="#333" />
+                        <circle cx="25" cy="75" r="3" fill="#333" />
+                        <circle cx="75" cy="75" r="3" fill="#333" />
+                    </svg>
+                    <h4>Totalement Enrobée</h4>
+                    <p>Profilé HEB/HEM entièrement enrobé de béton armé</p>
+                </div>
+                <div class="type-card">
+                    <svg viewBox="0 0 100 100" width="80" height="80">
+                        <rect x="25" y="15" width="50" height="8" fill="#4a90a4" stroke="#2d5a8a" />
+                        <rect x="25" y="77" width="50" height="8" fill="#4a90a4" stroke="#2d5a8a" />
+                        <rect x="46" y="23" width="8" height="54" fill="#4a90a4" stroke="#2d5a8a" />
+                        <rect x="25" y="23" width="21" height="54" fill="#b0b0b0" opacity="0.8" />
+                        <rect x="54" y="23" width="21" height="54" fill="#b0b0b0" opacity="0.8" />
+                    </svg>
+                    <h4>Partiellement Enrobée</h4>
+                    <p>Béton entre les semelles du profilé</p>
+                </div>
+                <div class="type-card">
+                    <svg viewBox="0 0 100 100" width="80" height="80">
+                        <circle cx="50" cy="50" r="40" fill="#4a90a4" stroke="#2d5a8a" stroke-width="2" />
+                        <circle cx="50" cy="50" r="35" fill="#b0b0b0" />
+                    </svg>
+                    <h4>Tube Circulaire Rempli</h4>
+                    <p>Tube acier rempli de béton (CFT)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapitres -->
+        <section class="chapters-section">
+            <h2>Contenu du Cours</h2>
+            <div class="chapters-grid">
+                <a href="chapitre1.html" class="chapter-card">
+                    <span class="chapter-number">01</span>
+                    <h3>Introduction</h3>
+                    <p>Types de poteaux mixtes, avantages et domaine d'application</p>
+                </a>
+                <a href="chapitre2.html" class="chapter-card">
+                    <span class="chapter-number">02</span>
+                    <h3>Sections Mixtes</h3>
+                    <p>Enrobées, partiellement enrobées, tubes remplis</p>
+                </a>
+                <a href="chapitre3.html" class="chapter-card">
+                    <span class="chapter-number">03</span>
+                    <h3>Caractéristiques</h3>
+                    <p>Résistance plastique, rigidité effective, contribution acier</p>
+                </a>
+                <a href="chapitre4.html" class="chapter-card">
+                    <span class="chapter-number">04</span>
+                    <h3>Flambement</h3>
+                    <p>Charge critique, élancement réduit, courbes EC3</p>
+                </a>
+                <a href="chapitre5.html" class="chapter-card">
+                    <span class="chapter-number">05</span>
+                    <h3>Flexion Composée</h3>
+                    <p>Interaction M-N, effets du second ordre</p>
+                </a>
+                <a href="chapitre6.html" class="chapter-card">
+                    <span class="chapter-number">06</span>
+                    <h3>Résistance au Feu</h3>
+                    <p>Méthode tabulaire, dimensions minimales</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Formules clés -->
+        <section class="formulas-preview">
+            <h2>Formules Essentielles</h2>
+            <div class="formula-cards">
+                <div class="formula-card">
+                    <h4>Résistance Plastique</h4>
+                    <div class="formula">
+                        \[N_{pl,Rd} = A_a f_{yd} + 0.85 A_c f_{cd} + A_s f_{sd}\]
+                    </div>
+                </div>
+                <div class="formula-card">
+                    <h4>Rigidité Effective</h4>
+                    <div class="formula">
+                        \[(EI)_{eff} = E_a I_a + E_s I_s + 0.6 E_{cm} I_c\]
+                    </div>
+                </div>
+                <div class="formula-card">
+                    <h4>Résistance au Flambement</h4>
+                    <div class="formula">
+                        \[N_{b,Rd} = \chi \cdot N_{pl,Rd}\]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outils -->
+        <section class="tools-section">
+            <h2>Outils Interactifs</h2>
+            <div class="tools-grid">
+                <a href="calculateurs.html" class="tool-card">
+                    <span class="tool-icon">🧮</span>
+                    <h4>Calculateurs</h4>
+                    <p>4 outils de vérification automatisés</p>
+                </a>
+                <a href="exercices.html" class="tool-card">
+                    <span class="tool-icon">📝</span>
+                    <h4>Exercices</h4>
+                    <p>3 exercices résolus pas à pas</p>
+                </a>
+                <a href="formulaire.html" class="tool-card">
+                    <span class="tool-icon">📋</span>
+                    <h4>Formulaire</h4>
+                    <p>Toutes les formules de référence</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte selon Eurocode 4</p>
+        </div>
+    </footer>
+
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>
+        if (!requireAuth()) {
+            // Redirection vers login
+        }
+    </script>
+</body>
+
+</html>

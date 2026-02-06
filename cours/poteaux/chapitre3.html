@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 3 : Caractéristiques | Poteaux Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle active">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html" class="active">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../accueil.html">Accueil</a><span class="separator">/</span>
+                <a href="index.html">Poteaux Mixtes</a><span class="separator">/</span>
+                <span>Chapitre 3</span>
+            </div>
+            <h1>Chapitre 3 : Caractéristiques des Sections</h1>
+            <p>Résistance plastique, rigidité effective et contribution de l'acier</p>
+        </div>
+    </header>
+
+    <main class="article">
+        <div class="container">
+            <article class="article-content">
+
+                <h2>3.1 Notations</h2>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Symbole</th>
+                                <th>Signification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>\(A_a\)</td>
+                                <td>Section du profilé acier</td>
+                            </tr>
+                            <tr>
+                                <td>\(A_c\)</td>
+                                <td>Section de béton</td>
+                            </tr>
+                            <tr>
+                                <td>\(A_s\)</td>
+                                <td>Section des armatures</td>
+                            </tr>
+                            <tr>
+                                <td>\(I_a\)</td>
+                                <td>Inertie du profilé acier</td>
+                            </tr>
+                            <tr>
+                                <td>\(I_c\)</td>
+                                <td>Inertie de la section de béton</td>
+                            </tr>
+                            <tr>
+                                <td>\(f_{yd} = f_y/\gamma_{M0}\)</td>
+                                <td>Limite élastique de calcul de l'acier</td>
+                            </tr>
+                            <tr>
+                                <td>\(f_{cd} = f_{ck}/\gamma_C\)</td>
+                                <td>Résistance de calcul du béton</td>
+                            </tr>
+                            <tr>
+                                <td>\(f_{sd} = f_{sk}/\gamma_S\)</td>
+                                <td>Résistance de calcul des armatures</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>3.2 Résistance Plastique en Compression</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Résistance plastique (EC4 §6.7.3.2)</h4>
+                    <div class="formula-main">
+                        \[N_{pl,Rd} = A_a \cdot f_{yd} + 0.85 \cdot A_c \cdot f_{cd} + A_s \cdot f_{sd}\]
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Tubes Remplis</h4>
+                    <p>Pour les tubes remplis de béton, le coefficient <strong>0.85</strong> peut être remplacé par
+                        <strong>1.0</strong> grâce à l'effet de confinement.</p>
+                </div>
+
+                <h2>3.3 Contribution de l'Acier</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Coefficient de contribution (EC4 §6.7.1)</h4>
+                    <div class="formula-main">
+                        \[\delta = \frac{A_a \cdot f_{yd}}{N_{pl,Rd}}\]
+                    </div>
+                    <p><strong>Condition :</strong> \(0.2 \leq \delta \leq 0.9\)</p>
+                </div>
+
+                <div class="conditions-grid">
+                    <div class="condition-item warning">
+                        <h4>Si δ &lt; 0.2</h4>
+                        <p>→ Dimensionner comme <strong>poteau béton armé</strong> (EC2)</p>
+                    </div>
+                    <div class="condition-item warning">
+                        <h4>Si δ &gt; 0.9</h4>
+                        <p>→ Dimensionner comme <strong>poteau acier</strong> (EC3)</p>
+                    </div>
+                </div>
+
+                <h2>3.4 Rigidité Effective en Flexion</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Rigidité effective pour le flambement (EC4 §6.7.3.3)</h4>
+                    <div class="formula-main">
+                        \[(EI)_{eff} = E_a \cdot I_a + E_s \cdot I_s + K_e \cdot E_{cm} \cdot I_c\]
+                    </div>
+                    <p>avec :</p>
+                    <ul>
+                        <li>\(E_a = 210\,000\) MPa (module acier)</li>
+                        <li>\(E_s = 200\,000\) MPa (module armatures)</li>
+                        <li>\(E_{cm}\) = module sécant du béton</li>
+                        <li>\(K_e = 0.6\) (coefficient de correction)</li>
+                    </ul>
+                </div>
+
+                <h2>3.5 Rigidité pour Effets du Second Ordre</h2>
+
+                <div class="info-box formula-box">
+                    <h4>📐 Rigidité effective II (EC4 §6.7.3.4)</h4>
+                    <div class="formula-main">
+                        \[(EI)_{eff,II} = 0.9 \cdot (E_a \cdot I_a + E_s \cdot I_s + 0.5 \cdot E_{cm} \cdot I_c)\]
+                    </div>
+                </div>
+
+                <h2>3.6 Exemple de Calcul</h2>
+
+                <div class="info-box example">
+                    <h4>💡 HEB 300 enrobé dans section 450×450</h4>
+
+                    <p><strong>Données :</strong></p>
+                    <ul>
+                        <li>Profilé : HEB 300, \(A_a = 149\) cm², \(I_a = 25170\) cm⁴</li>
+                        <li>Section béton : 450 × 450 mm, C30/37</li>
+                        <li>Armatures : 4 HA 20 (\(A_s = 12.57\) cm²)</li>
+                    </ul>
+
+                    <p><strong>Section de béton :</strong></p>
+                    <div class="formula">
+                        \[A_c = 45 \times 45 - 149 - 12.57 = 1863.4 \text{ cm}^2\]
+                    </div>
+
+                    <p><strong>Résistance plastique :</strong></p>
+                    <div class="formula">
+                        \begin{align}
+                        N_{pl,Rd} &= 149 \times \frac{355}{1.0} + 0.85 \times 1863.4 \times \frac{30}{1.5} + 12.57
+                        \times \frac{500}{1.15} \\
+                        &= 5290 + 3168 + 547 = \boxed{9005 \text{ kN}}
+                        \end{align}
+                    </div>
+
+                    <p><strong>Coefficient de contribution :</strong></p>
+                    <div class="formula">
+                        \[\delta = \frac{5290}{9005} = 0.59 \quad \checkmark \quad (0.2 < 0.59 < 0.9)\] </div>
+                    </div>
+
+                    <div class="chapter-navigation">
+                        <a href="chapitre2.html" class="nav-btn prev">
+                            <span>← Chapitre 2 : Sections Mixtes</span>
+                        </a>
+                        <a href="chapitre4.html" class="nav-btn next">
+                            <span>Chapitre 4 : Flambement →</span>
+                        </a>
+                    </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+        </div>
+    </footer>
+
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>if (!requireAuth()) { }</script>
+</body>
+
+</html>

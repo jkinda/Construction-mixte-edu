@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateurs | Poteaux Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html" class="active">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Calculateurs Interactifs</h1>
+            <p>Outils de vérification pour poteaux mixtes selon l'Eurocode 4</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Calculateur 1: Résistance Plastique -->
+        <section class="calculator-section">
+            <h2>🧮 Calculateur 1 : Résistance Plastique</h2>
+
+            <div class="calculator-grid">
+                <div class="calc-inputs">
+                    <h4>Données d'entrée</h4>
+
+                    <div class="input-group">
+                        <label>Type de profilé :</label>
+                        <select id="profil1">
+                            <option value="HEB200">HEB 200 (Aa=78.1 cm²)</option>
+                            <option value="HEB240">HEB 240 (Aa=106 cm²)</option>
+                            <option value="HEB280">HEB 280 (Aa=131 cm²)</option>
+                            <option value="HEB300" selected>HEB 300 (Aa=149 cm²)</option>
+                            <option value="HEB340">HEB 340 (Aa=171 cm²)</option>
+                            <option value="HEM300">HEM 300 (Aa=303 cm²)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Section béton b×h (mm) :</label>
+                        <div class="input-row">
+                            <input type="number" id="b1" value="450" min="200" max="800"> ×
+                            <input type="number" id="h1" value="450" min="200" max="800">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Classe de béton :</label>
+                        <select id="beton1">
+                            <option value="C25">C25/30 (fck=25 MPa)</option>
+                            <option value="C30" selected>C30/37 (fck=30 MPa)</option>
+                            <option value="C35">C35/45 (fck=35 MPa)</option>
+                            <option value="C40">C40/50 (fck=40 MPa)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Nuance d'acier :</label>
+                        <select id="acier1">
+                            <option value="S235">S235 (fy=235 MPa)</option>
+                            <option value="S355" selected>S355 (fy=355 MPa)</option>
+                            <option value="S460">S460 (fy=460 MPa)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Armatures As (cm²) :</label>
+                        <input type="number" id="As1" value="12.57" min="0" max="100" step="0.01">
+                    </div>
+
+                    <button class="btn-calculate" onclick="calculerResistance()">Calculer</button>
+                </div>
+
+                <div class="calc-results" id="results1">
+                    <h4>Résultats</h4>
+                    <p class="result-placeholder">Entrez les données et cliquez sur Calculer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculateur 2: Flambement -->
+        <section class="calculator-section">
+            <h2>🧮 Calculateur 2 : Vérification au Flambement</h2>
+
+            <div class="calculator-grid">
+                <div class="calc-inputs">
+                    <h4>Données d'entrée</h4>
+
+                    <div class="input-group">
+                        <label>Résistance plastique Npl,Rd (kN) :</label>
+                        <input type="number" id="NplRd2" value="9000" min="100">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Rigidité effective (EI)eff (kN.m²) :</label>
+                        <input type="number" id="EIeff2" value="100000" min="1000">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Longueur L (m) :</label>
+                        <input type="number" id="L2" value="4.0" min="1" max="20" step="0.1">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Conditions d'appui :</label>
+                        <select id="appui2">
+                            <option value="0.5">Encastré-Encastré (β=0.5)</option>
+                            <option value="0.7">Encastré-Articulé (β=0.7)</option>
+                            <option value="1.0" selected>Articulé-Articulé (β=1.0)</option>
+                            <option value="2.0">Encastré-Libre (β=2.0)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Courbe de flambement :</label>
+                        <select id="courbe2">
+                            <option value="0.21">a (α=0.21) - Tube circulaire</option>
+                            <option value="0.34" selected>b (α=0.34) - Enrobé axe fort</option>
+                            <option value="0.49">c (α=0.49) - Enrobé axe faible</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Effort NEd (kN) :</label>
+                        <input type="number" id="NEd2" value="5000" min="0">
+                    </div>
+
+                    <button class="btn-calculate" onclick="calculerFlambement()">Calculer</button>
+                </div>
+
+                <div class="calc-results" id="results2">
+                    <h4>Résultats</h4>
+                    <p class="result-placeholder">Entrez les données et cliquez sur Calculer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculateur 3: Flexion Composée -->
+        <section class="calculator-section">
+            <h2>🧮 Calculateur 3 : Flexion Composée</h2>
+
+            <div class="calculator-grid">
+                <div class="calc-inputs">
+                    <h4>Données d'entrée</h4>
+
+                    <div class="input-group">
+                        <label>Résistance plastique Npl,Rd (kN) :</label>
+                        <input type="number" id="NplRd3" value="9000" min="100">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Moment plastique Mpl,Rd (kN.m) :</label>
+                        <input type="number" id="MplRd3" value="800" min="10">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Effort NEd (kN) :</label>
+                        <input type="number" id="NEd3" value="4000" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Moment MEd (kN.m) :</label>
+                        <input type="number" id="MEd3" value="150" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Coefficient αM :</label>
+                        <select id="alphaM3">
+                            <option value="0.9" selected>0.9 (S235/S275)</option>
+                            <option value="0.8">0.8 (S355 à S460)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-calculate" onclick="calculerFlexionComposee()">Calculer</button>
+                </div>
+
+                <div class="calc-results" id="results3">
+                    <h4>Résultats</h4>
+                    <p class="result-placeholder">Entrez les données et cliquez sur Calculer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculateur 4: Résistance Feu -->
+        <section class="calculator-section">
+            <h2>🧮 Calculateur 4 : Résistance au Feu</h2>
+
+            <div class="calculator-grid">
+                <div class="calc-inputs">
+                    <h4>Données d'entrée</h4>
+
+                    <div class="input-group">
+                        <label>Type de section :</label>
+                        <select id="type4">
+                            <option value="enrobee" selected>Profilé enrobé</option>
+                            <option value="tube_circ">Tube circulaire rempli</option>
+                            <option value="tube_rect">Tube rectangulaire rempli</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Dimension principale (mm) :</label>
+                        <input type="number" id="dim4" value="400" min="100" max="1000">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Enrobage c (mm) - si enrobée :</label>
+                        <input type="number" id="enrob4" value="50" min="20" max="100">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Niveau de chargement μfi :</label>
+                        <input type="number" id="mu4" value="0.5" min="0.1" max="0.7" step="0.1">
+                    </div>
+
+                    <button class="btn-calculate" onclick="calculerFeu()">Vérifier</button>
+                </div>
+
+                <div class="calc-results" id="results4">
+                    <h4>Résultats</h4>
+                    <p class="result-placeholder">Entrez les données et cliquez sur Vérifier</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte</p>
+        </div>
+    </footer>
+
+    <script src="js/calculateurs-poteaux.js"></script>
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>if (!requireAuth()) { }</script>
+</body>
+
+</html>

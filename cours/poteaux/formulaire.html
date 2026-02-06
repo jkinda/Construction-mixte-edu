@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire | Poteaux Mixtes</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .formulaire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .formula-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-section h3 {
+            color: #1e3a5f;
+            border-bottom: 2px solid #4a90a4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .formula-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4a90a4;
+        }
+
+        .formula-item .label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .formula-item .mjx-container {
+            font-size: 1.1em !important;
+        }
+
+        .data-section {
+            margin-top: 40px;
+        }
+
+        .data-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-section th,
+        .data-section td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-section th {
+            background: #1e3a5f;
+            color: white;
+        }
+
+        .data-section tr:hover {
+            background: #f5f5f5;
+        }
+
+        @media print {
+
+            .navbar,
+            .footer,
+            button {
+                display: none !important;
+            }
+
+            .formula-section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../accueil.html" class="nav-logo"><span class="logo-icon">🏗️</span><span>Construction
+                    Mixte</span></a>
+            <ul class="nav-menu">
+                <li><a href="../../accueil.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Poteaux Mixtes <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapitre1.html">1. Introduction</a></li>
+                        <li><a href="chapitre2.html">2. Sections Mixtes</a></li>
+                        <li><a href="chapitre3.html">3. Caractéristiques</a></li>
+                        <li><a href="chapitre4.html">4. Flambement</a></li>
+                        <li><a href="chapitre5.html">5. Flexion Composée</a></li>
+                        <li><a href="chapitre6.html">6. Résistance Feu</a></li>
+                    </ul>
+                </li>
+                <li><a href="calculateurs.html">Calculateurs</a></li>
+                <li><a href="exercices.html">Exercices</a></li>
+                <li><a href="formulaire.html" class="active">Formulaire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Formulaire de Référence</h1>
+            <p>Toutes les formules essentielles pour le dimensionnement des poteaux mixtes</p>
+            <button onclick="window.print()"
+                style="margin-top: 15px; padding: 10px 20px; background: white; color: #1e3a5f; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">🖨️
+                Imprimer</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="formulaire-grid">
+
+            <!-- Résistance Plastique -->
+            <section class="formula-section">
+                <h3>📐 Résistance Plastique</h3>
+
+                <div class="formula-item">
+                    <div class="label">Résistance plastique en compression</div>
+                    \[N_{pl,Rd} = A_a f_{yd} + 0.85 A_c f_{cd} + A_s f_{sd}\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Coefficient de contribution de l'acier</div>
+                    \[\delta = \frac{A_a \cdot f_{yd}}{N_{pl,Rd}} \quad (0.2 \leq \delta \leq 0.9)\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Résistance du béton seul</div>
+                    \[N_{pm,Rd} = 0.85 \cdot A_c \cdot f_{cd}\]
+                </div>
+            </section>
+
+            <!-- Rigidité -->
+            <section class="formula-section">
+                <h3>📐 Rigidité Effective</h3>
+
+                <div class="formula-item">
+                    <div class="label">Rigidité pour le flambement</div>
+                    \[(EI)_{eff} = E_a I_a + E_s I_s + 0.6 E_{cm} I_c\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Rigidité avec effets 2nd ordre</div>
+                    \[(EI)_{eff,II} = 0.9(E_a I_a + E_s I_s + 0.5 E_{cm} I_c)\]
+                </div>
+            </section>
+
+            <!-- Flambement -->
+            <section class="formula-section">
+                <h3>📐 Flambement</h3>
+
+                <div class="formula-item">
+                    <div class="label">Charge critique d'Euler</div>
+                    \[N_{cr} = \frac{\pi^2 (EI)_{eff}}{L_{cr}^2}\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Élancement réduit</div>
+                    \[\bar{\lambda} = \sqrt{\frac{N_{pl,Rk}}{N_{cr}}} \leq 2.0\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Coefficient de réduction</div>
+                    \[\chi = \frac{1}{\Phi + \sqrt{\Phi^2 - \bar{\lambda}^2}}\]
+                    \[\Phi = 0.5[1 + \alpha(\bar{\lambda} - 0.2) + \bar{\lambda}^2]\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Résistance au flambement</div>
+                    \[N_{b,Rd} = \chi \cdot N_{pl,Rd}\]
+                </div>
+            </section>
+
+            <!-- Flexion Composée -->
+            <section class="formula-section">
+                <h3>📐 Flexion Composée</h3>
+
+                <div class="formula-item">
+                    <div class="label">Vérification simplifiée</div>
+                    \[\frac{M_{Ed}}{M_{pl,N,Rd}} \leq \alpha_M\]
+                    <p style="font-size: 0.9em; color: #666;">α<sub>M</sub> = 0.9 (S235/S275) ou 0.8 (S355-S460)</p>
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Moment réduit par N</div>
+                    \[M_{pl,N,Rd} = M_{pl,Rd} \cdot \frac{1 - N_{Ed}/N_{pl,Rd}}{1 - N_{pm,Rd}/(2N_{pl,Rd})}\]
+                </div>
+
+                <div class="formula-item">
+                    <div class="label">Amplification 2nd ordre</div>
+                    \[k = \frac{\beta}{1 - N_{Ed}/N_{cr,eff}} \geq 1.0\]
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Tableaux de données -->
+        <div class="data-section">
+            <h2>📊 Données Matériaux</h2>
+
+            <div class="formulaire-grid">
+                <section class="formula-section">
+                    <h3>Acier de construction</h3>
+                    <table>
+                        <tr>
+                            <th>Nuance</th>
+                            <th>f<sub>y</sub> (MPa)</th>
+                            <th>E (GPa)</th>
+                            <th>γ<sub>M0</sub></th>
+                        </tr>
+                        <tr>
+                            <td>S235</td>
+                            <td>235</td>
+                            <td>210</td>
+                            <td>1.0</td>
+                        </tr>
+                        <tr>
+                            <td>S275</td>
+                            <td>275</td>
+                            <td>210</td>
+                            <td>1.0</td>
+                        </tr>
+                        <tr>
+                            <td>S355</td>
+                            <td>355</td>
+                            <td>210</td>
+                            <td>1.0</td>
+                        </tr>
+                        <tr>
+                            <td>S460</td>
+                            <td>460</td>
+                            <td>210</td>
+                            <td>1.0</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="formula-section">
+                    <h3>Béton</h3>
+                    <table>
+                        <tr>
+                            <th>Classe</th>
+                            <th>f<sub>ck</sub> (MPa)</th>
+                            <th>E<sub>cm</sub> (GPa)</th>
+                            <th>γ<sub>C</sub></th>
+                        </tr>
+                        <tr>
+                            <td>C25/30</td>
+                            <td>25</td>
+                            <td>31</td>
+                            <td>1.5</td>
+                        </tr>
+                        <tr>
+                            <td>C30/37</td>
+                            <td>30</td>
+                            <td>33</td>
+                            <td>1.5</td>
+                        </tr>
+                        <tr>
+                            <td>C35/45</td>
+                            <td>35</td>
+                            <td>34</td>
+                            <td>1.5</td>
+                        </tr>
+                        <tr>
+                            <td>C40/50</td>
+                            <td>40</td>
+                            <td>35</td>
+                            <td>1.5</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+
+            <div class="formulaire-grid" style="margin-top: 25px;">
+                <section class="formula-section">
+                    <h3>Courbes de flambement</h3>
+                    <table>
+                        <tr>
+                            <th>Courbe</th>
+                            <th>α</th>
+                            <th>Application</th>
+                        </tr>
+                        <tr>
+                            <td>a</td>
+                            <td>0.21</td>
+                            <td>Tubes circulaires remplis</td>
+                        </tr>
+                        <tr>
+                            <td>b</td>
+                            <td>0.34</td>
+                            <td>Enrobé axe fort, Tubes rectangulaires</td>
+                        </tr>
+                        <tr>
+                            <td>c</td>
+                            <td>0.49</td>
+                            <td>Enrobé axe faible</td>
+                        </tr>
+                        <tr>
+                            <td>d</td>
+                            <td>0.76</td>
+                            <td>Sections très élancées</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="formula-section">
+                    <h3>Longueurs de flambement</h3>
+                    <table>
+                        <tr>
+                            <th>Appuis</th>
+                            <th>β</th>
+                            <th>L<sub>cr</sub></th>
+                        </tr>
+                        <tr>
+                            <td>Encastré-Encastré</td>
+                            <td>0.5</td>
+                            <td>0.5L</td>
+                        </tr>
+                        <tr>
+                            <td>Encastré-Articulé</td>
+                            <td>0.7</td>
+                            <td>0.7L</td>
+                        </tr>
+                        <tr>
+                            <td>Articulé-Articulé</td>
+                            <td>1.0</td>
+                            <td>L</td>
+                        </tr>
+                        <tr>
+                            <td>Encastré-Libre</td>
+                            <td>2.0</td>
+                            <td>2L</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+
+            <div class="formulaire-grid" style="margin-top: 25px;">
+                <section class="formula-section">
+                    <h3>Résistance au feu - Dimensions minimales</h3>
+                    <table>
+                        <tr>
+                            <th>Type</th>
+                            <th>R30</th>
+                            <th>R60</th>
+                            <th>R90</th>
+                            <th>R120</th>
+                        </tr>
+                        <tr>
+                            <td>Tube circulaire (d)</td>
+                            <td>140</td>
+                            <td>200</td>
+                            <td>260</td>
+                            <td>320</td>
+                        </tr>
+                        <tr>
+                            <td>Tube rectangulaire (b)</td>
+                            <td>100</td>
+                            <td>160</td>
+                            <td>200</td>
+                            <td>260</td>
+                        </tr>
+                        <tr>
+                            <td>Enrobé (section)</td>
+                            <td>200</td>
+                            <td>250</td>
+                            <td>300</td>
+                            <td>350</td>
+                        </tr>
+                        <tr>
+                            <td>Enrobé (enrobage c)</td>
+                            <td>25</td>
+                            <td>40</td>
+                            <td>50</td>
+                            <td>60</td>
+                        </tr>
+                    </table>
+                    <p style="font-size: 0.85em; color: #666; margin-top: 10px;">Toutes les dimensions en mm</p>
+                </section>
+
+                <section class="formula-section">
+                    <h3>Profilés HEB courants</h3>
+                    <table>
+                        <tr>
+                            <th>Profilé</th>
+                            <th>A (cm²)</th>
+                            <th>I<sub>y</sub> (cm⁴)</th>
+                            <th>I<sub>z</sub> (cm⁴)</th>
+                        </tr>
+                        <tr>
+                            <td>HEB 200</td>
+                            <td>78.1</td>
+                            <td>5696</td>
+                            <td>2003</td>
+                        </tr>
+                        <tr>
+                            <td>HEB 260</td>
+                            <td>118</td>
+                            <td>14920</td>
+                            <td>5135</td>
+                        </tr>
+                        <tr>
+                            <td>HEB 300</td>
+                            <td>149</td>
+                            <td>25170</td>
+                            <td>8563</td>
+                        </tr>
+                        <tr>
+                            <td>HEB 340</td>
+                            <td>171</td>
+                            <td>36660</td>
+                            <td>9690</td>
+                        </tr>
+                        <tr>
+                            <td>HEM 300</td>
+                            <td>303</td>
+                            <td>59200</td>
+                            <td>19400</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ESUP J - Cours de Construction Mixte selon Eurocode 4</p>
+        </div>
+    </footer>
+
+    <script src="../../auth/auth.js"></script>
+    <script src="../../js/protection.js"></script>
+    <script>if (!requireAuth()) { }</script>
+</body>
+
+</html>
